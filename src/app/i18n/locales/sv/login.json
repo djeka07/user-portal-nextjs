@@ -16,5 +16,9 @@
         "empty": "Du måste skriva in ett lösenord"
       }
     }
+  },
+  "links": {
+    "not-a-user": "Inget konto?",
+    "forgot": "Glömt lösenord?"
   }
 }

@@ -1,5 +1,5 @@
 import { Typography } from '@djeka07/ui/src/components/atoms/typographies';
-import { useTranslation } from '~/app/i18n/server';
+import { getTranslation } from '~/app/i18n/server';
 import { LoginForm } from '../components/login-forms';
 import login from '../models/actions/login';
 
@@ -9,7 +9,7 @@ type LoginViewProps = {
 };
 
 const LoginView = async ({ redirectTo, language }: LoginViewProps) => {
-  const { t } = await useTranslation(language, 'login')
+  const { t } = await getTranslation(language, 'login')
   return (
     <>
       <Typography variant="h1">{t('title')}</Typography>

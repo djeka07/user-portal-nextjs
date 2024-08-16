@@ -16,5 +16,9 @@
         "empty": "You need to enter a password"
       }
     }
+  },
+  "links": {
+    "not-a-user": "Not a user?",
+    "forgot": "Forgot password?"
   }
 }

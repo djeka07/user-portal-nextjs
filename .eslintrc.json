@@ -1,10 +1,17 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "no-restricted-imports": ["error", { "paths": [{
-      "name": "react-i18next",
-      "importNames": ["useTranslation"],
-      "message": "Please import 'useTranslation' from '~/app/i18n/client' instead."
-  }]}]
+    "no-restricted-imports": ["error", { 
+      "paths": [
+        {
+          "name": "react-i18next",
+          "importNames": ["useTranslation"],
+          "message": "Please import 'useTranslation' from '~/app/i18n/client' instead."
+        }, {
+          "name": "next/link",
+          "message": "Please import 'Link' from '~/common/components/links' instead."
+        }
+      ]
+    }]
   }
 }

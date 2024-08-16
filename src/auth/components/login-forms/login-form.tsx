@@ -2,8 +2,8 @@
 import { Button, Message, TextInput } from '@djeka07/ui';
 import { buttonWrapper, form, link, linkWrapper, message } from './login.form.css';
 import { useActionState } from 'react';
-import Link from 'next/link';
 import { useTranslation } from '~/app/i18n/client';
+import { Link } from '~/common/components/links';
 
 type LoginFormProps = {
   redirectTo?: string;
@@ -42,10 +42,10 @@ const LoginForm = ({ action, redirectTo }: LoginFormProps) => {
         </Button>
         <div className={linkWrapper}>
           <Link className={link} href="/register">
-            {t('form:login:link:not-a-user')}
+            {t('login:links:not-a-user')}
           </Link>
           <Link className={link} href="/reset">
-            {t('form:login:link:forgot')}
+            {t('login:links:forgot')}
           </Link>
         </div>
       </div>

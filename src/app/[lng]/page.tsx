@@ -1,17 +1,12 @@
-import Link from "next/link";
 
-type HomeProps = {
+import { redirect } from "next/navigation";
+
+type IndexProps = {
   params: { lng: string }
 }
 
-export default function Home({ params: { lng } }: HomeProps) {
-  return (
-    <main>
-      <div>
-        <p>
-          <Link href={`${lng}/login`}>Login</Link>
-        </p>
-      </div>
-    </main>
-  );
+const Index = ({ params: { lng } }: IndexProps) => {
+  redirect(`/${lng}/login`)
 }
+
+export default Index
