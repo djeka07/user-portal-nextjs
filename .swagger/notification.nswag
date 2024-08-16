@@ -1,0 +1,33 @@
+{
+  "runtime": "Net60",
+  "documentGenerator": {
+    "fromDocument": {
+      "url": "http://localhost:3003/swagger-json",
+      "output": null
+    }
+  },
+  "codeGenerators": {
+    "openApiToTypeScriptClient": {
+     "typescriptVersion": 4.4,
+      "typeStyle": "Interface",
+      "generateClientClasses": true,
+      "generateClientInterfaces": false,
+      "generateOptionalParameters": true,
+      "exportTypes": true,
+      "template": "Fetch",
+      "httpClass": "Http",
+      "injectionTokenType": "OpaqueToken",
+      "generateOptionalParameters": true,
+      "output": "../src/notifications/models/services/generated/notification.generated.ts",
+      "serviceHost": ".",
+      "configurationClass": "AuthClient",
+      "clientBaseClass": "AccessTokenAuthClient",
+      "markOptionalProperties": true,
+      "generateConstructorInterface": true,
+      "extensionCode": "fetch-extensions.ts",
+      "useTransformOptionsMethod": true,
+      "importRequiredTypes": true,
+      "useGetBaseUrlMethod": true,
+    }
+  }
+}

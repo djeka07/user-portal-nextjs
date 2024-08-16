@@ -1,0 +1,20 @@
+{
+  "title": "Logga in",
+  "description": "Logga in i användarportalen",
+  "form": {
+    "email": {
+      "label": "E-post",
+      "placeholder": "Skriv in din e-post",
+      "error": {
+        "not-valid": "E-posten är ogiltig"
+      }
+    },
+    "password": {
+      "label": "Lösenord",
+      "placeholder": "Skriv in ditt lösenord",
+      "error": {
+        "empty": "Du måste skriva in ett lösenord"
+      }
+    }
+  }
+}

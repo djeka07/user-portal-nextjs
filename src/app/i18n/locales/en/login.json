@@ -1,0 +1,20 @@
+{
+  "title": "Login",
+  "description": "Login to the user portal",
+  "form": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "error": {
+        "not-valid": "The email is not valid"
+      }
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password",
+      "error": {
+        "empty": "You need to enter a password"
+      }
+    }
+  }
+}
