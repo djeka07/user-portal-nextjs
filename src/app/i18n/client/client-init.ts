@@ -16,8 +16,9 @@ i18next
     ...getOptions(),
     lng: undefined,
     detection: {
-      order: ['path', 'htmlTag'],
+      order: ['path', 'htmlTag', 'cookie'],
     },
+    ns: ['app', 'common', 'login', 'register', 'reset', 'users'],
     preload: runsOnServerSide ? languages : []
   })
 

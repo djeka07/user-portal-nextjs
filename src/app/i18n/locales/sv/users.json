@@ -1,0 +1,40 @@
+{
+  "users-view": {
+    "title": "Användare",
+    "waiting-text": "{{count}} användare väntar på att få access till systemet.",
+    "give-access": "Ge access",
+    "create": "Skapa användare"
+  },
+  "users-list": {
+    "create-new": "Ny användare",
+    "number-of-users": "{{count}} användare"
+  },
+  "user-view": {
+    "actions": {
+      "edit": {
+        "title": "Uppdatera",
+        "text": "Uppdatera användarinformation"
+      },
+      "reset": {
+        "title": "Återställ",
+        "text": "Har du glömt bort vilket ditt nuvarande lösenord är kan du återställa det."
+      },
+      "edit-password": {
+        "title": "Ändra lösenord",
+        "text": "Ändra  ditt befintliga lösenord till ett nytt.",
+        "form": {
+          "update-password": {
+            "title": "Uppdatera lösenord",
+              "current-password": {
+                "label": "Nuvarande lösenord",
+                "placeholder": "Skriv in nuvarande lösenord",
+                "error": {
+                  "empty": "Du måste fylla i ditt nuvarande lösenord"
+                }
+            }
+          }
+        }
+      }
+    }
+  }
+}

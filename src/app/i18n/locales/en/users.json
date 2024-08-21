@@ -1,0 +1,28 @@
+{
+  "users-view": {
+    "title": "Users",
+    "waiting-text": "{{count}} users are waiting to get access to the system.",
+    "give-access": "Give access",
+    "create": "Create user"
+  },
+  "users-list": {
+    "create-new": "New user",
+    "number-of-users": "{{count}} users"
+  },
+  "user-view": {
+    "actions": {
+      "edit": {
+        "title": "Edit",
+        "text": "Edit user information"
+      },
+      "reset": {
+        "title": "Reset",
+        "text": "If you have forgotten your current password then you can reset it."
+      },
+      "edit-password": {
+        "title": "Change password",
+        "text": "Change your password to a new one ."
+      }
+    }
+  }
+}

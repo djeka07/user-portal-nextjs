@@ -3,17 +3,13 @@ import { UnauthLayout as Layout } from "~/auth/components/layouts";
 
 export type UnAuthLayoutProps = {
   children: ReactNode;
+  searchParams?: { reason?: string };
 }
 
-const UnAuthLayout = ({ children }: UnAuthLayoutProps) => {
-  const reason = ''
-  return (
-    <>
-      <Layout reason={reason || undefined}>
-        {children}
-      </Layout>
-    </>
-  );
-};
+const UnAuthLayout = ({ children, searchParams }: UnAuthLayoutProps) => (
+  <Layout reason={searchParams?.reason || undefined}>
+    {children}
+  </Layout>
+);
 
 export default UnAuthLayout;

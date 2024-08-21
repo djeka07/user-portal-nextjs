@@ -1,13 +1,25 @@
 'use server';
 
-import { loginSchema } from "~/auth/components/login-forms/login-form.schema";
+import { parse } from "@djeka07/utils";
 import { loginRequest } from "../services/auth.service";
+import { redirect } from "next/navigation";
 
-const login = async (state: any, form: FormData) => {
-  console.log('form', state, form)
-  const email = String(form.get('email'));
-  const password = String(form.get('password'));
+import zod from 'zod';
+import { ActionReturn } from "~/common/models/types/actions";
+import { createSession } from '../helpers/session';
+import { createToken } from '../helpers/token';
 
+const loginSchema = zod.object({
+  redirectTo: zod.string().optional(),
+  language: zod.string().optional(),
+  email: zod.string({ message: 'login:form:email:error:empty' }).email('login:form:email:error:not-valid'),
+  password: zod.string({ message: 'login:form:password:error:empty' }).min(1, 'login:form:password:error:empty'),
+});
+
+type LoginFormData = zod.infer<typeof loginSchema>;
+
+const loginAction = async (_: unknown, form: FormData): Promise<ActionReturn> => {
+  const { email, language, password, redirectTo } = parse<LoginFormData>(form);
   const validate = loginSchema.safeParse({ email, password });
   if (!validate.success) {
     return {
@@ -15,7 +27,8 @@ const login = async (state: any, form: FormData) => {
     }
   }
   const response = await loginRequest({ email, password });
-  return response;
+  await createSession(createToken(response));
+  return redirect(redirectTo || `/${language}`)
 }
 
-export default login;
+export default loginAction;

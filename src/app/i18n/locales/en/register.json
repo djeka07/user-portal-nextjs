@@ -1,0 +1,28 @@
+{
+  "title": "Register user",
+  "description": "Register a user in the portal.",
+  "form": {
+    "first-name": {
+      "label": "First name",
+      "placeholder": "Enter first name",
+      "error": {
+        "empty": "First name is required"
+      }
+    },
+    "last-name": {
+      "label": "Last name",
+      "placeholder": "Enter last name",
+      "error": {
+        "empty": "Last name is required"
+      }
+    },
+    "confirm-password": {
+      "label": "Confirm password",
+      "placeholder": "Enter password again",
+      "error": {
+        "empty": "Confirm password is required",
+        "no-match": "The password does not match"
+      }
+    }
+  }
+}

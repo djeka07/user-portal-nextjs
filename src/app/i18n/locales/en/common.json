@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "apps": "Applications",
+    "home": "Home",
+    "users": "Users",
+    "messages": "Messages",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "button": {
+    "create": "Create",
+    "actions": "Actions",
+    "update": "Update",
+    "cancel": "Cancel"
+  }
+}

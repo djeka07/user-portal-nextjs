@@ -1,0 +1,28 @@
+{
+  "title": "Registrera användare",
+  "description": "Registrera en användare i portalen.",
+  "form": {
+    "first-name": {
+      "label": "Förnamn",
+      "placeholder": "Skriv in förnamn",
+      "error": {
+        "empty": "Du måste skriva in ett förnamn"
+      }
+    },
+    "last-name": {
+      "label": "Efternamn",
+      "placeholder": "Skriv in",
+      "error": {
+        "empty": "Du måste skriva in ett efternamn"
+      }
+    },
+    "confirm-password": {
+      "label": "Bekräfta lösenord",
+      "placeholder": "Skriv in lösenordet igen",
+      "error": {
+        "empty": "Du måste skriva in samma lösenord igen",
+        "no-match": "Lösenorden matchar inte varandra"
+      }
+    }
+  }
+}

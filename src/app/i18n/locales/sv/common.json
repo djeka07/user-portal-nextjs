@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "apps": "Applikationer",
+    "home": "Hem",
+    "users": "Användare",
+    "messages": "Meddelanden",
+    "profile": "Profil",
+    "settings": "Inställningar",
+    "logout": "Logga ut"
+  },
+  "button": {
+    "create": "Skapa",
+    "actions": "Alternativ",
+    "update": "Uppdatera",
+    "cancel": "Avbryt"
+  }
+}

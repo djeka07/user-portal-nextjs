@@ -1,6 +1,12 @@
+import { compose } from '@djeka07/utils';
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+import createBundleAnylyzer from '@next/bundle-analyzer'
 
 const withVanillaExtractCss = createVanillaExtractPlugin({ identifiers: process.env.NODE_ENV === 'production' ? 'short' : 'debug' });
+
+const withBundleAnalyzer = createBundleAnylyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,6 +14,9 @@ const nextConfig = {
   serverRuntimeConfig: {
     userApi: process.env.USER_API,
     applicationId: process.env.APPLICATION_ID
+  },
+  experimental: {
+    reactCompiler: true,
   },
   webpack: (config) => {
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
@@ -46,4 +55,4 @@ const nextConfig = {
   }
 };
 
-export default withVanillaExtractCss(nextConfig);
+export default withBundleAnalyzer(withVanillaExtractCss(nextConfig));

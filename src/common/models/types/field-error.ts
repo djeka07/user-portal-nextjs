@@ -1,0 +1,1 @@
+export type FieldError = { [key: string]: string[] | undefined }

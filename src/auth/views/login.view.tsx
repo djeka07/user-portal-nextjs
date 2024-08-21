@@ -4,16 +4,17 @@ import { LoginForm } from '../components/login-forms';
 import login from '../models/actions/login';
 
 type LoginViewProps = {
-  redirectTo?: string | null;
+  redirectTo?: string;
+  email?: string;
   language: string;
 };
 
-const LoginView = async ({ redirectTo, language }: LoginViewProps) => {
-  const { t } = await getTranslation(language, 'login')
+const LoginView = async ({ redirectTo, language, email }: LoginViewProps) => {
+  const { t } = await getTranslation(language, 'login');
   return (
     <>
       <Typography variant="h1">{t('title')}</Typography>
-      <LoginForm action={login} />
+      <LoginForm action={login} redirectTo={redirectTo} email={email} />
     </>
   );
 };
