@@ -1,6 +1,6 @@
 import { Icon, Typography } from '@djeka07/ui';
 import { getTranslation } from '~/app/i18n/server';
-import logoutAction from '~/auth/models/actions/logout';
+import logoutAction from '~/app/actions/logout';
 import { UserResponse } from '~/users/models/services/generated/user.generated';
 import { Link } from '../links';
 import {

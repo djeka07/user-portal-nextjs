@@ -1,15 +1,10 @@
-import { ReactNode } from "react";
-import { UnauthLayout as Layout } from "~/auth/components/layouts";
+import { ReactNode } from 'react';
+import { UnauthLayout as Layout } from '~/auth/components/layouts';
 
-export type UnAuthLayoutProps = {
+type UnauthLayoutProps = {
   children: ReactNode;
-  searchParams?: { reason?: string };
-}
+};
 
-const UnAuthLayout = ({ children, searchParams }: UnAuthLayoutProps) => (
-  <Layout reason={searchParams?.reason || undefined}>
-    {children}
-  </Layout>
-);
+const UnauthLayout = ({ children }: UnauthLayoutProps) => <Layout>{children}</Layout>;
 
-export default UnAuthLayout;
+export default UnauthLayout;

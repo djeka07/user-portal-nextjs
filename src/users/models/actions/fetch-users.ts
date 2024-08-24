@@ -1,5 +1,5 @@
 'use server';
-import getAuth from '~/auth/models/actions/get-auth';
+import getAuth from '~/app/test/get-auth';
 import { UsersResponse } from '../services/generated/user.generated';
 import { fetchUsersRequest } from '../services/user.service';
 

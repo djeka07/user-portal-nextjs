@@ -34,7 +34,7 @@ const NoAccessUsers = async ({ language }: NoAccessUsersProps) => {
         </Typography>
       </div>
       <div className={buttonWrapper}>
-        <Suspense fallback={<Button disabled>{t('users:users-view:give-access')}</Button>}>
+        <Suspense fallback={<div>hej</div>}>
           <Link href="">{t('users:users-view:give-access')}</Link>
         </Suspense>
       </div>

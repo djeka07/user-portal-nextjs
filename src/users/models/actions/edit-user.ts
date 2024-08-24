@@ -3,8 +3,8 @@
 import { parse } from '@djeka07/utils';
 import { z } from 'zod';
 import { ActionReturn } from '~/common/models/types/actions';
-import { createUserRequest, updateUserRequest } from '../services/user.service';
-import getAuth from '~/auth/models/actions/get-auth';
+import { updateUserRequest } from '../services/user.service';
+import getAuth from '~/app/test/get-auth';
 
 
 export const userFormSchema = z.object({

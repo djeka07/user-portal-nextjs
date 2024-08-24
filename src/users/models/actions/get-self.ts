@@ -1,7 +1,6 @@
 'use server';
 
-import getAuth from '~/auth/models/actions/get-auth';
-import { getSession } from '~/auth/models/helpers/session';
+import getAuth from '~/app/test/get-auth';
 import { getSelfRequest } from '../services/user.service';
 
 const getSelfAction = async () => {

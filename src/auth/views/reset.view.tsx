@@ -1,7 +1,7 @@
 import { Typography } from '@djeka07/ui';
 import { getTranslation } from '~/app/i18n/server';
 import { ResetForm } from '~/auth/components/reset-forms';
-import resetPasswordAction from '../models/actions/reset-password';
+import resetPasswordAction from '../../app/actions/reset-password';
 
 type ResetViewProps = {
   language: string;

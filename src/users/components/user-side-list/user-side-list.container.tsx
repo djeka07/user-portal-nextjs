@@ -1,19 +1,18 @@
 'use client';
-import UserList from './user-side-list';
-import { useParams } from 'next/navigation';
-import { ProgressState } from '~/common/models/types/fetch.state';
 import { useEffect, useState } from 'react';
 import { useSocket } from '~/common/models/hooks';
-import { UsersResponse } from '~/users/models/services/generated/user.generated';
+import { ProgressState } from '~/common/models/types/fetch.state';
 import fetchUsersAction from '~/users/models/actions/fetch-users';
+import { UsersResponse } from '~/users/models/services/generated/user.generated';
+import UserList from './user-side-list';
 
 type UserSideListContainerProps = {
-  selectedUserId?: string;
+  id?: string;
 };
 
-const UserSideListContainer = ({ selectedUserId }: UserSideListContainerProps) => {
+const UserSideListContainer = ({ id }: UserSideListContainerProps) => {
   const { loggedInUsers } = useSocket();
-  const params = useParams();
+
   const [page] = useState(1);
   const [state, setState] = useState<ProgressState<UsersResponse>>({ state: 'pending' });
 
@@ -32,7 +31,7 @@ const UserSideListContainer = ({ selectedUserId }: UserSideListContainerProps) =
     fetch();
   }, []);
 
-  return <UserList loggedInUsers={loggedInUsers} selectedUserId={params.id as string} state={state} />;
+  return <UserList loggedInUsers={loggedInUsers} selectedUserId={id} state={state} />;
 };
 
 export default UserSideListContainer;

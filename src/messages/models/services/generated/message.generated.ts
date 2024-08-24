@@ -546,7 +546,7 @@ export class ConversationControllerClient extends AccessTokenAuthClient {
     /**
      * Update a message read status
      */
-    readMessages(id: string, body: CreateMessageRequest): Promise<MessageReponse> {
+    readMessages(id: string, body: ReadMessagesRequest): Promise<MessageReponse[]> {
         let url_ = this.baseUrl + "/api/v1/conversations/{id}/messages/read";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
@@ -571,13 +571,13 @@ export class ConversationControllerClient extends AccessTokenAuthClient {
         });
     }
 
-    protected processReadMessages(response: Response): Promise<MessageReponse> {
+    protected processReadMessages(response: Response): Promise<MessageReponse[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : <MessageReponse>JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = _responseText === "" ? null : <MessageReponse[]>JSON.parse(_responseText, this.jsonParseReviver);
             return result200;
             });
         } else if (status === 400) {
@@ -589,7 +589,7 @@ export class ConversationControllerClient extends AccessTokenAuthClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<MessageReponse>(<any>null);
+        return Promise.resolve<MessageReponse[]>(<any>null);
     }
 }
 
@@ -607,7 +607,7 @@ export interface CreateConversationRequest {
     /** Message to be created when creating the conversation */
     message?: string;
 }
-
+    
 export interface ConversionMessageResponse {
     messageId: string;
     message: string;
@@ -681,6 +681,10 @@ export interface AddConversationUsersRequest {
 
 export interface CreateMessageRequest {
     message: string;
+}
+
+export interface ReadMessagesRequest {
+    messageIds: string[];
 }
 
 export interface MessageCreatedEvent {

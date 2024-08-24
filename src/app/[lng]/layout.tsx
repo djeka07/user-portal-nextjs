@@ -5,6 +5,7 @@ import { I18nClientProvider } from '../i18n/client/i18n.context';
 import { getTranslation } from '../i18n/server';
 import { languages } from '../i18n/settings';
 import { PanelsProvider } from '@djeka07/ui';
+import { ReactNode } from 'react';
 
 type MetadataProps = {
   params: { lng: string };
@@ -19,13 +20,7 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-export default function RootLayout({
-  children,
-  params: { lng },
-}: {
-  children: React.ReactNode;
-  params: { lng: string };
-}) {
+export default function RootLayout({ children, params: { lng } }: { children: ReactNode; params: { lng: string } }) {
   return (
     <html lang={lng} dir={dir(lng)}>
       <ColorModeProvider initial="dark">

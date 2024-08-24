@@ -1,0 +1,8 @@
+{
+  "conversation-list": {
+    "title": "Meddelanden",
+    "create-new": "Nytt meddelande",
+    "messages-with": "Meddelanden med {{users}}",
+    "number-of-messages": "{{count}} meddelanden"
+  }
+}

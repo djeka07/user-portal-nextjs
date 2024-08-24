@@ -12,8 +12,8 @@ export type AuthProviderProps = {
 };
 
 export type AuthState = {
-  token: Authorization | null;
-  user: UserResponse | null;
+  token?: Authorization;
+  user?: UserResponse;
   roles: RoleResponse[];
 };
 
@@ -28,8 +28,8 @@ export type AuthContextType = [AuthState, AuthContextActions];
 
 const initialContext: AuthContextType = [
   {
-    token: null,
-    user: null,
+    token: undefined,
+    user: undefined,
     roles: [],
   },
   {

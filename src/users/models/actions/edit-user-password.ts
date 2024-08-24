@@ -3,7 +3,7 @@ import { ActionReturn } from '~/common/models/types/actions';
 import {z} from 'zod';
 import { parse } from '@djeka07/utils';
 import { updatePasswordFromAccessToken } from '../services/user.service';
-import getAuth from '~/auth/models/actions/get-auth';
+import getAuth from '~/app/test/get-auth';
 
 const editPasswordFormSchema = z
   .object({

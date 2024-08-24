@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
+import getAuth from '~/app/test/get-auth';
 import { AuthLayout as Layout } from '~/auth/components/layouts';
-import fetchRolesAction from '~/auth/models/actions/fetch-roles';
-import getAuth from '~/auth/models/actions/get-auth';
+import fetchRolesAction from '~/app/actions/fetch-roles';
 import getSelfAction from '~/users/models/actions/get-self';
 
-export type UnAuthLayoutProps = {
+type AuthLayoutProps = {
   children: ReactNode;
   params: { lng: string };
 };
 
-const AuthLayout = async ({ children, params: { lng } }: UnAuthLayoutProps) => {
+const AuthLayout = async ({ children, params: { lng } }: AuthLayoutProps) => {
   const tokenData = getAuth();
   const userData = getSelfAction();
   const rolesData = fetchRolesAction();

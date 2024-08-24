@@ -1,4 +1,4 @@
-import getAuth from '~/auth/models/actions/get-auth';
+import getAuth from '~/app/test/get-auth';
 import { GetApplicationsResponse } from '../services/generated/user.generated';
 import { fetchApplications } from '../services/user.service';
 

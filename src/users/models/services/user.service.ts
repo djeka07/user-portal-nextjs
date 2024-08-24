@@ -44,6 +44,13 @@ export type FetchUserRequestParams = GetSelfRequestParams & {
   id: string;
 }
 
+export type SearchUsersRequestParams = GetSelfRequestParams & {
+  page: number;
+  take: number;
+  query?: string;
+};
+
+
 export const getSelfRequest = ({ accessToken }: GetSelfRequestParams): Promise<UserResponse> => {
   const headers = createHeaders({accessToken});
   const client = new SelfControllerClient(new AuthClient(url, headers), url, http());
@@ -78,7 +85,6 @@ export const fetchUsersRequest = async ({
   filter,
 }: FetchUsersRequestParams): Promise<UsersResponse> => {
   const headers = createHeaders({ accessToken });
-  console.log('url', url)
   const client = new UserControllerClient(new AuthClient(url, headers), url, http());
   return client.getUsers(false, JSON.stringify(filter), page, take);
 };
@@ -88,7 +94,6 @@ export const fetchUserRequest = async ({
 id
 }: FetchUserRequestParams): Promise<UserResponse> => {
   const headers = createHeaders({ accessToken });
-  console.log('url', url)
   const client = new UserControllerClient(new AuthClient(url, headers), url, http());
   return client.findUserById(id);
 };
@@ -113,4 +118,15 @@ export const fetchApplications = async ({
   const headers = createHeaders({ accessToken });
   const client = new AppControllerClient(new AuthClient(url, headers), url, http());
   return client.get(page, take);
+};
+
+export const searchUsers = async ({
+  accessToken,
+  page,
+  take,
+  query,
+}: SearchUsersRequestParams): Promise<UsersResponse> => {
+  const headers = createHeaders({ accessToken });
+  const client = new UserControllerClient(new AuthClient(url, headers), url, http());
+  return client.searchUsers(query, page, take);
 };

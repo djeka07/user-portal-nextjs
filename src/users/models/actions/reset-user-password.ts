@@ -1,7 +1,7 @@
 'use server';
-import getAuth from '~/auth/models/actions/get-auth';
-import { resetByIdRequest } from '../services/user.service';
 import { ActionReturn } from '~/common/models/types/actions';
+import { resetByIdRequest } from '../services/user.service';
+import getAuth from '~/app/test/get-auth';
 
 const resetUserPasswordAction = async (_: unknown, formData: FormData): Promise<ActionReturn> => {
   const id = String(formData.get('id'));

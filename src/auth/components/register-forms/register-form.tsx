@@ -18,7 +18,6 @@ const RegisterForm = ({ action, email }: RegisterFormProps) => {
   const { t, language } = useTranslation('register');
   const queryParams = createQueryParams({ email }, { skipNulls: true, addQueryPrefix: true, encodeValuesOnly: true });
   const [state, formAction, pending] = useActionState(action, { statusCode: undefined });
-  console.log(state);
   return (
     <form className={form} action={formAction}>
       <div className={inputs}>

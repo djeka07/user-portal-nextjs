@@ -3,7 +3,7 @@ import { Button, Message, TextInput } from '@djeka07/ui';
 import { useActionState } from 'react';
 import { useTranslation } from '~/app/i18n/client';
 import { form } from './new-password.css';
-import newPasswordFromResetTokenAction from '~/auth/models/actions/new-password';
+import newPasswordFromResetTokenAction from '~/app/actions/new-password';
 
 type NewPasswordFormProps = {
   email: string;
@@ -13,8 +13,6 @@ type NewPasswordFormProps = {
 const NewPasswordForm = ({ email, resetToken }: NewPasswordFormProps) => {
   const [state, formAction, pending] = useActionState(newPasswordFromResetTokenAction, { statusCode: undefined });
   const { t } = useTranslation();
-
-  console.log(state);
 
   return (
     <form className={form} action={formAction}>

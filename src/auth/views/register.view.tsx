@@ -1,7 +1,7 @@
 import { Typography } from '@djeka07/ui/src/components/atoms/typographies';
 import { getTranslation } from '~/app/i18n/server';
 import { RegisterForm } from '~/auth/components/register-forms';
-import registerAction from '../models/actions/register';
+import registerAction from '../../app/actions/register';
 
 type RegisterViewProps = {
   language: string;

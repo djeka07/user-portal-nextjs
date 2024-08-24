@@ -1,7 +1,7 @@
 import { NextFetchEvent, NextMiddleware, NextRequest, NextResponse } from 'next/server';
 import 'server-only';
 import { MiddlewareFactory } from '~/common/models/helpers/middlewares';
-import { getSession } from '../helpers/session';
+import { getSession } from '../../../app/test/session';
 
 const LANG_PLACEHOLDER = ':lang';
 

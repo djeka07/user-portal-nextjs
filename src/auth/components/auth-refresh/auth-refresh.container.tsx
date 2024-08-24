@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import refreshAuthenticationAction from '~/auth/models/actions/refresh-authentication';
+import refreshAuthenticationAction from '~/app/actions/refresh-authentication';
 import { useAuth } from '~/auth/models/hooks/use-auth';
 import { createDate } from '~/common/models/helpers/date';
 import { ProgressState } from '~/common/models/types/fetch.state';
@@ -30,13 +30,11 @@ const AuthRefreshContainer = () => {
   );
 
   useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_AUTH_CHECK_INTERVAL_MS);
     const interval = setInterval(async () => {
       const expires = createDate(token?.expires).subtract(
         parseInt(String(process.env.NEXT_PUBLIC_AUTH_SUBSTRACT_MS), 10),
         'milliseconds',
       );
-      console.log(expires);
       if (createDate().isAfter(expires)) {
         await refreshToken(token!.refreshToken);
       }

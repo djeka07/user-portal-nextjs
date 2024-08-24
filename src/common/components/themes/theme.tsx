@@ -12,15 +12,7 @@ type ThemeProps = {
 
 const Theme = ({ theme, toggleTheme, className, size = 'large' }: ThemeProps) => {
   const t = (s: string) => s;
-  return (
-    <Icon
-      title={t(`common:theme:${theme === 'dark' ? 'light' : 'dark'}`)}
-      onClick={toggleTheme}
-      className={css(iconClass, theme, className)}
-      name="SunMoon"
-      size={size}
-    />
-  );
+  return <Icon onClick={toggleTheme} className={css(iconClass, theme, className)} name="SunMoon" size={size} />;
 };
 
 export default Theme;

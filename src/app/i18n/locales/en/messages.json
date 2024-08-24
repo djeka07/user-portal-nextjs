@@ -1,0 +1,8 @@
+{
+  "conversation-list": {
+    "title": "Messages",
+    "create-new": "New message",
+    "messages-with": "Messages with {{users}}",
+    "number-of-messages": "{{count}} messages"
+  }
+}

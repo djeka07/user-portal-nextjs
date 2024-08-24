@@ -13,5 +13,8 @@
     "actions": "Actions",
     "update": "Update",
     "cancel": "Cancel"
+  },
+  "label": {
+    "you": "You: "
   }
 }

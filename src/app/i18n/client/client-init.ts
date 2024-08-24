@@ -18,7 +18,7 @@ i18next
     detection: {
       order: ['path', 'htmlTag', 'cookie'],
     },
-    ns: ['app', 'common', 'login', 'register', 'reset', 'users'],
+    ns: ['app', 'common', 'login', 'register', 'reset', 'users', 'messages'],
     preload: runsOnServerSide ? languages : []
   })
 

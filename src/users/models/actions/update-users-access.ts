@@ -1,9 +1,9 @@
 'use server';
 import { updateUsersAccessRequest } from '../services/user.service';
-import getAuth from '~/auth/models/actions/get-auth';
 
-import { z } from 'zod';
 import { toBool } from '@djeka07/utils';
+import { z } from 'zod';
+import getAuth from '~/app/test/get-auth';
 import { ActionReturn } from '~/common/models/types/actions';
 
 const usersFormSchema = z.object({

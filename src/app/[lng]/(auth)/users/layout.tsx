@@ -4,10 +4,11 @@ import { UserSideListContainer } from '~/users/components/user-side-list';
 
 export type UsersLayoutProps = {
   children: ReactNode;
+  params: { id?: string };
 };
 
-const UsersLayout = ({ children }: UsersLayoutProps) => (
-  <AsideLayout margin="small" asideRender={<UserSideListContainer />}>
+const UsersLayout = ({ children, params }: UsersLayoutProps) => (
+  <AsideLayout margin="small" asideRender={<UserSideListContainer id={params?.id} />}>
     {children}
   </AsideLayout>
 );
