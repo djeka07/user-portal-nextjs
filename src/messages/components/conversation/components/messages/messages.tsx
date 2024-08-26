@@ -18,27 +18,25 @@ type MessagesProps = {
   onMessagesRead?: (ids: string[]) => void;
 };
 
-const Messages = (props: MessagesProps) => {
+const Messages = ({ id, loggedInUsers, conversation, currentUser, onFetch, onMessagesRead }: MessagesProps) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [messagesToSend, setMessagesToSend] = useState<string[]>([]);
   const unreadMessages = useMemo(
-    () =>
-      props.conversation?.items?.filter(
-        (item) => isEmpty(item.readBy) && item.from?.userId !== props.currentUser?.id,
-      ) || [],
-    [],
+    () => conversation?.items?.filter((item) => isEmpty(item.readBy) && item.from?.userId !== currentUser?.id) || [],
+    [conversation?.items, currentUser?.id],
   );
+
   const onScoll = () => {
     if (
       !!ref.current &&
       ref?.current?.scrollTop < 500 &&
-      props.conversation?.state !== 'pending' &&
-      props.conversation?.hasNextPage &&
-      props.conversation?.state !== 'pending-next'
+      conversation?.state !== 'pending' &&
+      conversation?.hasNextPage &&
+      conversation?.state !== 'pending-next'
     ) {
-      props.onFetch?.();
+      onFetch?.();
     }
 
     // console.log(ref?.scrollTop, (ref?.scrollHeight as number) - (ref?.clientHeight as number));
@@ -54,7 +52,7 @@ const Messages = (props: MessagesProps) => {
   const onSend = debounce(
     () => {
       if (!isEmpty(messagesToSend)) {
-        props.onMessagesRead?.(messagesToSend);
+        onMessagesRead?.(messagesToSend);
         setMessagesToSend([]);
       }
     },
@@ -83,7 +81,7 @@ const Messages = (props: MessagesProps) => {
   }, []);
 
   useEffect(() => {
-    if (!ref || isEmpty(unreadMessages) || !props.onMessagesRead) {
+    if (!ref || isEmpty(unreadMessages) || !onMessagesRead) {
       return;
     }
     let observers: IntersectionObserver[] = [];
@@ -107,7 +105,7 @@ const Messages = (props: MessagesProps) => {
     if (!ref) {
       return;
     }
-    if (props.id) {
+    if (id) {
       scrollToBottom();
     }
   }, []);
@@ -122,33 +120,33 @@ const Messages = (props: MessagesProps) => {
   //     if (!ref) {
   //       return;
   //     }
-  //     ref.removeEventListener('scroll', onScoll);
+  //     ref.current?.removeEventListener('scroll', onScoll);
   //   };
   // }, []);
 
   return (
     <div className={wrapper} ref={ref}>
-      {props.conversation?.state === 'pending' ||
-        (props.conversation === undefined && (
+      {conversation?.state === 'pending' ||
+        (conversation === undefined && (
           <div className={spinnerWrapper}>
             <Spinner />
           </div>
         ))}
-      {!props.conversation?.hasNextPage && props.conversation !== undefined && (
+      {!conversation?.hasNextPage && conversation !== undefined && (
         <Typography marginBottom="medium" align="center" variant="h4">
-          {t('label.start-of-conversation')}
+          {t('common:label:start-of-conversation')}
         </Typography>
       )}
       <div className={messages({ show: hasScrolled })}>
-        <For each={props.conversation?.items} keyed="messageId">
+        <For each={conversation?.items} keyed="messageId">
           {(s, index) => (
             <Message
-              currentUser={props.currentUser}
-              isGroup={props.conversation?.isGroup}
+              currentUser={currentUser}
+              isGroup={conversation?.isGroup}
               index={index}
-              isLastMessage={(props.conversation?.items?.length || 0) - 1 === index}
+              isLastMessage={(conversation?.items?.length || 0) - 1 === index}
               item={s}
-              users={props.conversation?.users}
+              users={conversation?.users}
             />
           )}
         </For>

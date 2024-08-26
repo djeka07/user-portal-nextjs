@@ -3,7 +3,7 @@ import mapMessageResponseToConversationMessage from './map-message-response-to-c
 import { Form, MessageForm } from './message-form';
 import { useConversations } from '~/messages/models/hooks/use-conversations';
 import { FormEvent, FormEventHandler, useMemo } from 'react';
-import createMessageFormAction from '~/app/actions/create-message';
+import createMessageFormAction from '~/messages/models/actions/create-message';
 
 type MessageFormContainerProps = {
   id: string;

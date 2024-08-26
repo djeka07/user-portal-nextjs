@@ -3,7 +3,7 @@ import { updateUsersAccessRequest } from '../services/user.service';
 
 import { toBool } from '@djeka07/utils';
 import { z } from 'zod';
-import getAuth from '~/app/test/get-auth';
+import getAuth from '~/auth/models/helpers/get-auth';
 import { ActionReturn } from '~/common/models/types/actions';
 
 const usersFormSchema = z.object({

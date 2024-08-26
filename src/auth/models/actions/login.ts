@@ -1,13 +1,13 @@
 'use server';
 
 import { parse } from "@djeka07/utils";
-import { loginRequest } from "../../auth/models/services/auth.service";
+import { loginRequest } from "../services/auth.service";
 import { redirect } from "next/navigation";
 
 import zod from 'zod';
 import { ActionReturn } from "~/common/models/types/actions";
-import { createSession } from '../test/session';
-import { createToken } from '../../auth/models/helpers/token';
+import { createSession } from '../helpers/session';
+import { createToken } from '../helpers/token';
 
 const loginSchema = zod.object({
   redirectTo: zod.string().optional(),

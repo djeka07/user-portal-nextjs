@@ -15,6 +15,7 @@
     "cancel": "Cancel"
   },
   "label": {
-    "you": "You: "
+    "you": "You: ",
+    "start-of-conversation": "Start of conversation"
   }
 }

@@ -16,19 +16,12 @@ const MessageView = ({ id }: MessageViewProps) => {
     fetchMessages(id);
   }, [fetchMessages, id]);
 
-  return (
-    <Switch
-      expression={conversation?.state}
-      fallback={
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <Spinner />
-        </div>
-      }
-    >
-      <Match when="pending">
-        <Conversation id={id} />
-      </Match>
-    </Switch>
+  return conversation?.state === 'pending' ? (
+    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <Spinner />
+    </div>
+  ) : (
+    <Conversation id={id} />
   );
 };
 

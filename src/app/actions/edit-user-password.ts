@@ -1,9 +1,9 @@
-import { ActionReturn } from '~/common/models/types/actions';
-
-import {z} from 'zod';
+'use server';
 import { parse } from '@djeka07/utils';
-import { updatePasswordFromAccessToken } from '../services/user.service';
+import { z } from 'zod';
 import getAuth from '~/auth/models/helpers/get-auth';
+import { ActionReturn } from '~/common/models/types/actions';
+import { updatePasswordFromAccessToken } from '../../users/models/services/user.service';
 
 const editPasswordFormSchema = z
   .object({

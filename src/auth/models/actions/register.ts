@@ -4,7 +4,7 @@ import { parse } from '@djeka07/utils';
 import { redirect } from 'next/navigation';
 import zod from 'zod';
 import { ActionReturn } from '~/common/models/types/actions';
-import { registerRequest } from "../../auth/models/services/auth.service";
+import { registerRequest } from "../services/auth.service";
 
 
 const registerFormSchema = zod

@@ -1,7 +1,7 @@
 import { Typography } from '@djeka07/ui/src/components/atoms/typographies';
 import { getTranslation } from '~/app/i18n/server';
 import { LoginForm } from '../components/login-forms';
-import login from '../../app/actions/login';
+import login from '../models/actions/login';
 
 type LoginViewProps = {
   redirectTo?: string;

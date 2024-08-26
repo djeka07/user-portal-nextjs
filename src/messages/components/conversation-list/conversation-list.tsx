@@ -21,7 +21,9 @@ const ConversationList = (props: ConversationListProps) => {
   return (
     <>
       <div className={headingWrapper}>
-        <Typography variant="h4">{t('messages:conversation-list:title')}</Typography>
+        <Typography overflow="ellipsis" variant="h4">
+          {t('messages:conversation-list:title')}
+        </Typography>
         <Link title={t('messages.conversation-list.create-new')} href={`/${language}/messages/new`}>
           <Icon className={svg} name="Edit" />
         </Link>

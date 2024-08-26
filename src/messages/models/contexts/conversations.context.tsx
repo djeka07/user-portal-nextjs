@@ -1,7 +1,7 @@
 'use client';
 import { produce, WritableDraft } from 'immer';
 import { createContext, useState, useCallback } from 'react';
-import createMessageFormAction from '../../../app/actions/create-message';
+import createMessageFormAction from '../actions/create-message';
 import { MessageReponse } from '../services/generated/message.generated';
 import {
   ConversationActions,
@@ -10,10 +10,10 @@ import {
   ConversationState,
 } from './conversation.state';
 import createConversationWithDefaultValue from './create-conversation-with-default-value';
-import createConversationFormAction from '../../../app/actions/create-conversation';
-import updateMessageReadStatusServerFn from '../../../app/actions/update-message-read-status';
-import fetchConversationMessagesServerFn from '../../../app/actions/fetch-conversation-messages';
-import fetchConversationsServerFn from '../../../app/actions/fetch-conversations';
+import createConversationFormAction from '../actions/create-conversation';
+import updateMessageReadStatusServerFn from '../actions/update-message-read-status';
+import fetchConversationMessagesServerFn from '../actions/fetch-conversation-messages';
+import fetchConversationsServerFn from '../actions/fetch-conversations';
 import { arrayToObject } from '@djeka07/utils';
 
 const defaultState: ConversationsContextType = [
@@ -122,6 +122,7 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
       },
       fetchMessages: useCallback(async (id: string, page: number = 1, take: number = 20) => {
         try {
+          console.log('fetch messages');
           setState(
             produce((prev) => {
               const conversation = prev.conversations.find((c) => c.conversationId === id) || { state: 'initial' };
@@ -146,6 +147,7 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
               } else {
                 conversation.items = messages?.items;
               }
+              console.log(conversation);
             }),
           );
         } catch (error) {

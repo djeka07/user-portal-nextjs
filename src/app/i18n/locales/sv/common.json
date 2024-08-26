@@ -15,6 +15,7 @@
     "cancel": "Avbryt"
   },
   "label": {
-    "you": "Du: "
+    "you": "Du: ",
+    "start-of-conversation": "Början av konversationen"
   }
 }

@@ -1,7 +1,7 @@
 'use server';
 import { Authorization, createToken } from '~/auth/models/helpers/token';
-import { createSession, deleteSession } from '../test/session';
-import { refreshTokenRequest } from '../../auth/models/services/auth.service';
+import { createSession, deleteSession } from '../helpers/session';
+import { refreshTokenRequest } from '../services/auth.service';
 import { redirect } from 'next/navigation';
 
 const refreshAuthenticationAction = async (token: string, redirectTo: string): Promise<Authorization> => {

@@ -35,7 +35,7 @@ export const message = recipe({
     padding: '8px 12px',
     background: 'var(--600-grey-color)',
     justifySelf: 'left',
-    color: 'var(--link-color-light)',
+    color: 'var(--light-link-color)',
     borderRadius: 18,
     width: '100%',
   },

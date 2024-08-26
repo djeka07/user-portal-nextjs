@@ -2,9 +2,10 @@
 
 import { parse } from '@djeka07/utils';
 import { z } from 'zod';
-import { ActionReturn } from '~/common/models/types/actions';
-import { updateUserRequest } from '../services/user.service';
+import { createUserRequest } from '../../users/models/services/user.service';
+import { cookies } from 'next/headers';
 import getAuth from '~/auth/models/helpers/get-auth';
+import { ActionReturn } from '~/common/models/types/actions';
 
 
 export const userFormSchema = z.object({
@@ -28,10 +29,10 @@ export const userFormSchema = z.object({
 export type UserFormData = z.infer<typeof userFormSchema>;
 
 
-const editUserAction = async (_: unknown, formData: FormData): Promise<ActionReturn> => {
-  const { email, firstName, lastName, roles, id } = parse<UserFormData>(formData);
-
-  const { success, error } = userFormSchema.safeParse({ email, firstName, lastName, roles, id });
+const createUserAction = async (_: unknown, formData: FormData): Promise<ActionReturn> => {
+  const { email, firstName, lastName, roles } = parse<UserFormData>(formData);
+const {accessToken } = await getAuth();
+  const { success, error } = userFormSchema.safeParse({ email, firstName, lastName, roles });
 const filteredRoles = roles.filter<string>(
   (f): f is string => typeof f === 'string',
 ) || [];
@@ -41,9 +42,9 @@ const filteredRoles = roles.filter<string>(
       statusCode: 400
     }
   }
-  const { accessToken } = await getAuth();
-  const response = await updateUserRequest({ accessToken, id: id!, form: { email, firstName, lastName, roles: filteredRoles.map(((role) => ({ roleId: role })) ||[])} })
+
+  const response = await createUserRequest({ accessToken, form: { email, firstName, lastName, roles: filteredRoles.map(((role) => ({ roleId: role })) ||[])} })
   return { statusCode: 200, data: response }
 };
 
-export default editUserAction;
+export default createUserAction;

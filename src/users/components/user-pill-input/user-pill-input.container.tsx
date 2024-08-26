@@ -13,7 +13,7 @@ type UserPillInputContainerProps = {
   onSelectUser: (user: UserResponse) => Promise<void>;
 };
 
-const UserPillInputContainer = (props: UserPillInputContainerProps) => {
+const UserPillInputContainer = ({ selectedUsers, onDeleteUser, onSelectUser }: UserPillInputContainerProps) => {
   const [state, setState] = useState<ProgressState<UsersResponse>>({ state: 'initial' });
 
   const onInputChange = async (value: string) => {
@@ -27,11 +27,11 @@ const UserPillInputContainer = (props: UserPillInputContainerProps) => {
   };
 
   const onDeletePill = (id: string) => {
-    props.onDeleteUser(id);
+    onDeleteUser(id);
   };
 
   const onUserClick = async (user: UserResponse) => {
-    props.onSelectUser(user);
+    onSelectUser(user);
     setState({ state: 'initial' });
   };
 
@@ -40,7 +40,7 @@ const UserPillInputContainer = (props: UserPillInputContainerProps) => {
       onDelete={onDeletePill}
       onInputChange={onInputChange}
       onUserClick={onUserClick}
-      pills={props.selectedUsers.map((u) => ({ id: u.id, label: `${u.firstName} ${u.lastName}` }))}
+      pills={selectedUsers.map((u) => ({ id: u.id, label: `${u.firstName} ${u.lastName}` }))}
       state={state}
     />
   );

@@ -4,5 +4,13 @@
     "create-new": "Nytt meddelande",
     "messages-with": "Meddelanden med {{users}}",
     "number-of-messages": "{{count}} meddelanden"
+  },
+  "message-view": {
+    "beginning": "Början av konversationen",
+    "active": "Aktiv",
+    "not-active": "Inte aktiv",
+    "participants": "Deltagare",
+    "seen-by-text": "Sägs av {{name}} vid {{date}}",
+    "seen-by": "Meddelandet har setts av"
   }
 }

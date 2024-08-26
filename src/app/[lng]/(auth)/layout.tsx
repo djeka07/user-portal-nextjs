@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import getAuth from '~/app/test/get-auth';
 import { AuthLayout as Layout } from '~/auth/components/layouts';
-import fetchRolesAction from '~/app/actions/fetch-roles';
+import fetchRolesAction from '~/auth/models/actions/fetch-roles';
+import getAuth from '~/auth/models/helpers/get-auth';
 import getSelfAction from '~/users/models/actions/get-self';
 
 type AuthLayoutProps = {
@@ -22,4 +22,5 @@ const AuthLayout = async ({ children, params: { lng } }: AuthLayoutProps) => {
   );
 };
 
+export const revalidate = 0;
 export default AuthLayout;

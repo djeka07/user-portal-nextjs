@@ -12,10 +12,10 @@ type MessagesContainerProps = {
 
 const MessagesContainer = ({ id }: MessagesContainerProps) => {
   const [{ user }] = useAuth();
-  const [{ conversations }, { pushMessages, fetchMessages, readMessages, updateMessages }] = useConversations();
+  const [{ conversations, state }, { pushMessages, fetchMessages, readMessages, updateMessages }] = useConversations();
   const { socket, loggedInUsers } = useSocket();
-  const conversation = useMemo(() => conversations?.find((c) => c.conversationId === id), [id]);
-
+  const conversation = conversations?.find((i) => i.conversationId === id);
+  console.log('state', state);
   const onMessageRecieved = (message: MessageReponse) => {
     if (!conversation?.items?.find((s) => s.messageId === message?.messageId)) {
       pushMessages(id, [message]);

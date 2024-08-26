@@ -1051,10 +1051,10 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@djeka07/ui@0.1.50":
-  version "0.1.50"
-  resolved "https://registry.yarnpkg.com/@djeka07/ui/-/ui-0.1.50.tgz#7d3434d23abf76362e9a07f44d9d227dc1c7f2c2"
-  integrity sha512-cKPaujo6Zs7uv42V8jZEd6HQ76FNYMOjHbsXh/KNbMdxBzbj1pDekbxL4UxqS1IQb5Bv1DQh3GvXpBmNe6aIOg==
+"@djeka07/ui@0.1.51":
+  version "0.1.51"
+  resolved "https://registry.yarnpkg.com/@djeka07/ui/-/ui-0.1.51.tgz#8063594cc33dab6ec31c47e9b2b83b23cef38637"
+  integrity sha512-5oDvztQwXUulPK0w58NBsznUyJNNDUpcS/M/JId4aOQb0NwrmaidrEjsbDLaIGyrfzmVDlkZzq6ZppUEa1vRLw==
   dependencies:
     "@djeka07/utils" "1.0.6"
     "@vanilla-extract/css" "1.15.5"

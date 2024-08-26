@@ -2,8 +2,8 @@
 
 import { parse } from '@djeka07/utils';
 import { z } from 'zod';
+import { updateUserRequest } from '../../users/models/services/user.service';
 import { ActionReturn } from '~/common/models/types/actions';
-import { updateUserRequest } from '../services/user.service';
 import getAuth from '~/auth/models/helpers/get-auth';
 
 

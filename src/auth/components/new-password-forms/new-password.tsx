@@ -3,7 +3,7 @@ import { Button, Message, TextInput } from '@djeka07/ui';
 import { useActionState } from 'react';
 import { useTranslation } from '~/app/i18n/client';
 import { form } from './new-password.css';
-import newPasswordFromResetTokenAction from '~/app/actions/new-password';
+import newPasswordFromResetTokenAction from '~/auth/models/actions/new-password';
 
 type NewPasswordFormProps = {
   email: string;

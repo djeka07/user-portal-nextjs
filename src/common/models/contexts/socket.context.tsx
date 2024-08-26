@@ -1,13 +1,13 @@
 'use client';
-import { UserResponse } from '~/users/models/services/generated/user.generated';
-import { Authorization } from '~/auth/models/helpers/token';
-import { Socket } from 'socket.io-client';
-import { connectToClient } from '~/common/models/helpers/websocket';
 import { Dayjs } from 'dayjs';
-import { SocketEvent } from '~/notifications/models/services/generated/notification.generated';
 import { createContext, useEffect, useState } from 'react';
-import { SessionInformation } from '../types/user.session';
+import { Socket } from 'socket.io-client';
+import { Authorization } from '~/auth/models/helpers/token';
+import { connectToClient } from '~/common/models/helpers/websocket';
+import { SocketEvent } from '~/notifications/models/services/generated/notification.generated';
+import { UserResponse } from '~/users/models/services/generated/user.generated';
 import { useLocaleStorage } from '../hooks';
+import { SessionInformation } from '../types/user.session';
 
 export type SocketProviderProps = {
   token: Authorization;
@@ -31,16 +31,14 @@ export type SocketState = {
 export const SocketContext = createContext<Omit<SocketState, 'children'>>({ loggedInUsers: [] });
 
 export function SocketProvider({ children, token, user }: SocketProviderProps) {
-  const { getItem, setItem } = useLocaleStorage<string>();
+  const [sessionId, setSessionId] = useLocaleStorage<string | undefined>('sessionId', undefined);
   const [socket, setSocket] = useState<Socket>();
   const [loggedInUsers, setLoggedInUsers] = useState<SessionInformation[]>([]);
 
   useEffect(() => {
-    const sessionId = getItem('sessionId');
     const connctedIo = connectToClient(token?.accessToken as string, user, sessionId);
-
     connctedIo?.on(SocketEvent.SESSION_CONNECTED, ({ sessionId }) => {
-      setItem('sessionId', sessionId);
+      setSessionId(sessionId);
     });
 
     setSocket(connctedIo);
@@ -56,6 +54,7 @@ export function SocketProvider({ children, token, user }: SocketProviderProps) {
     connctedIo?.on(SocketEvent.USER_DISCONNECTED, (userId: string) => {
       setLoggedInUsers((prev) => prev.filter((u) => u.user?.userId !== userId));
     });
+
     return () => {
       if (socket) {
         console.log('disconnecting');

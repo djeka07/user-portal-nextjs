@@ -1,6 +1,6 @@
 'use server';
 
-import getAuth from '~/app/test/get-auth';
+import getAuth from '~/auth/models/helpers/get-auth';
 import { searchUsers } from '../services/user.service';
 
 const searchUsersServerFn = async (query: string, page: number, take: number) => {

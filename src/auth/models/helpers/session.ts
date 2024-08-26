@@ -1,7 +1,9 @@
 import 'server-only';
 import * as Iron from 'iron-webcrypto';
+import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+
+import { Authorization } from './token';
 import { cookies } from 'next/headers';
-import { Authorization } from '../../auth/models/helpers/token';
 
 const password = process.env.SESSION_PASSWORD;
 
@@ -11,10 +13,6 @@ const sealSession = async (authorization: Authorization): Promise<string> => {
 
 const unsealSession = async (session: string): Promise<Authorization> => {
   return Iron.unseal(globalThis.crypto, session, password!, Iron.defaults) as Promise<Authorization>
-}
-
-const get = () => {
-  
 }
 
 export const getSession = async (): Promise<Authorization | undefined> => {

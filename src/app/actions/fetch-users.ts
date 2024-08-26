@@ -1,7 +1,7 @@
 'use server';
 import getAuth from '~/auth/models/helpers/get-auth';
-import { UsersResponse } from '../services/generated/user.generated';
-import { fetchUsersRequest } from '../services/user.service';
+import { UsersResponse } from '../../users/models/services/generated/user.generated';
+import { fetchUsersRequest } from '../../users/models/services/user.service';
 
 const fetchUsersAction = async (
   page: number,

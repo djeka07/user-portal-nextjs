@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import refreshAuthenticationAction from '~/app/actions/refresh-authentication';
+import refreshAuthenticationAction from '~/auth/models/actions/refresh-authentication';
 import { useAuth } from '~/auth/models/hooks/use-auth';
 import { createDate } from '~/common/models/helpers/date';
 import { ProgressState } from '~/common/models/types/fetch.state';

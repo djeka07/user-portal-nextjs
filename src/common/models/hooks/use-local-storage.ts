@@ -1,25 +1,30 @@
-type UseLocaleStorageReturn<T> = {
-  getItem: (name: string) => T | undefined;
-  setItem: (name: string, value: T) => void;
-};
+import { Dispatch, MutableRefObject, RefObject, useCallback, useRef, useState } from 'react';
 
-export const useLocaleStorage = <T>(): UseLocaleStorageReturn<T> => {
-  const getItem = (name: string): T | undefined => {
+
+export const useLocaleStorage = <T>(key: string, initialValue: T) => {
+
+  const [state, setState] = useState<T>(() => {
     try {
-      const item = localStorage.getItem(name) as string;
-      return JSON.parse(item) as T;
+      const item = localStorage.getItem(key);
+      if (item === null) {
+        return initialValue;
+      }
+      return JSON.parse(item!) as T;
     } catch (error) {
-      return undefined;
+      return initialValue
     }
-  };
-
-  const setItem = (name: string, value: T): void => {
-    try {
-      localStorage.setItem(name, JSON.stringify(value));
-    } catch (error) {
-      console.log(error);
+  });
+  const updateState: Dispatch<React.SetStateAction<T>> = useCallback((value: T | ((state: T) => T)) => {
+    if (typeof value == 'function') {
+      setState((prev) => {
+        const newValue = (value as (state: T) => T)(prev)
+        localStorage.setItem(key, JSON.stringify(newValue))
+        return newValue
+      })
+    } else {
+      setState(value)
+      localStorage.setItem(key, JSON.stringify(value))
     }
-  };
-
-  return { setItem, getItem };
+  }, [key]);
+  return [state, updateState] as const
 };

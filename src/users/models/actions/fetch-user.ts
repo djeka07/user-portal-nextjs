@@ -1,4 +1,4 @@
-import getAuth from '~/app/test/get-auth';
+import getAuth from '~/auth/models/helpers/get-auth';
 import { fetchUserRequest } from '../services/user.service';
 
 const fetchUserAction = async (id: string) => {

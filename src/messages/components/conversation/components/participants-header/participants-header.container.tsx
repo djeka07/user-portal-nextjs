@@ -12,8 +12,8 @@ const ParticipantsContainer = (props: ParticipantsContainerProps) => {
   const navigate = useRouter();
   const [authState] = useAuth();
   const [state] = useConversations();
-  const conversation = Object.values(state.conversations)?.find((i) => i.conversationId === props.id);
-
+  const conversation = state.conversations?.find((i) => i.conversationId === props.id);
+  console.log('conversation', conversation);
   const { loggedInUsers } = useSocket();
 
   const onBackClick = () => {

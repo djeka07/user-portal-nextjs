@@ -1,5 +1,5 @@
 import { Typography } from '@djeka07/ui';
-import { getSession } from '~/app/test/session';
+import { getSession } from '~/auth/models/helpers/session';
 import { getSelfRequest } from '~/users/models/services/user.service';
 
 type IndexProps = {

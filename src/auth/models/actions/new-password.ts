@@ -1,7 +1,7 @@
 'use server';
 
 import newPasswordSchema from "~/auth/components/new-password-forms/new-password.schema";
-import { newPasswordFromResetTokenRequest, NewPasswordFromResetTokenRequestParams } from "../../auth/models/services/auth.service";
+import { newPasswordFromResetTokenRequest, NewPasswordFromResetTokenRequestParams } from "../services/auth.service";
 import { FieldError } from "~/common/models/types/field-error";
 import { parse } from '@djeka07/utils'
 

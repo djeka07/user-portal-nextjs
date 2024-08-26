@@ -54,7 +54,7 @@ const ParticipantsHeader = ({ currentUser, loggedInUsers, onBackClick, conversat
                 })}
               ></span>
               <Typography as="span" variant="body" color="grey400" size="small">
-                {anyOnline ? t('messages.conversation.active') : t('messages.conversation.not-active')}
+                {anyOnline ? t('messages:message-view:active') : t('messages:message-view:not-active')}
               </Typography>
             </span>
           </span>

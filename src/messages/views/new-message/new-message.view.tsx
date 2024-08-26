@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useTranslation } from '~/app/i18n/client';
 import { ProgressState } from '~/common/models/types/fetch.state';
 import { useConversations } from '~/messages/models/hooks/use-conversations';
-import fetchConversationFromUsers from '~/app/actions/fetch-conversation-from-users';
+import fetchConversationFromUsers from '~/messages/models/actions/fetch-conversation-from-users';
 import { ConversationResponse } from '../../models/services/generated/message.generated';
 import { newMessageWrapper, root, wrapper } from './new-message.view.css';
 import { Match, Spinner, Switch, Typography } from '@djeka07/ui';

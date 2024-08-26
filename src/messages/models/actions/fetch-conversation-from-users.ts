@@ -1,8 +1,8 @@
 'use server';
 
-import getAuth from '~/app/test/get-auth';
-import { ConversationResponse } from '../../messages/models/services/generated/message.generated';
-import { fetchConversationFromUsers } from '../../messages/models/services/messages.service';
+import getAuth from '~/auth/models/helpers/get-auth';
+import { ConversationResponse } from '../services/generated/message.generated';
+import { fetchConversationFromUsers } from '../services/messages.service';
 
 const fetchConversationFromUsersServerFn = async (ids: string[]): Promise<ConversationResponse> => {
   const { accessToken} = await getAuth();

@@ -2,7 +2,7 @@
 
 import { parse } from "@djeka07/utils";
 import { z } from "zod";
-import { resetPasswordRequest } from "../../auth/models/services/auth.service";
+import { resetPasswordRequest } from "../services/auth.service";
 import { ActionReturn } from "~/common/models/types/actions";
 
 const resetPasswordSchema = z.object({
