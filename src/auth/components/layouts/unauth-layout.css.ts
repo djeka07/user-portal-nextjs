@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import media from '~/styles/media.css';
+import media from '~/common/styles/media.css';
 export const main = style({
   display: 'flex',
   flexDirection: 'column',

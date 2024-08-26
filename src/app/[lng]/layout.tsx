@@ -1,6 +1,6 @@
 import { dir } from 'i18next';
 import { ColorModeProvider } from '~/common/models/contexts/color-mode.context';
-import StylesSheet from '~/styles/stylesheet';
+import StylesSheet from '~/common/styles/stylesheet';
 import { I18nClientProvider } from '../i18n/client/i18n.context';
 import { getTranslation } from '../i18n/server';
 import { languages } from '../i18n/settings';

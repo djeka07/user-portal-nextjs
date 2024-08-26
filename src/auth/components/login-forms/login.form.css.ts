@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import mediaCss from '~/styles/media.css';
+import mediaCss from '~/common/styles/media.css';
 
 export const form = style({
   display: 'grid',

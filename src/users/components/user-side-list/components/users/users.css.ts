@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
-import media from '~/styles/media.css';
+import media from '~/common/styles/media.css';
+
 
 export const userItem = recipe({
   base: {
