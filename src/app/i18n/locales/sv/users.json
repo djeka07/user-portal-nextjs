@@ -7,7 +7,15 @@
   },
   "users-list": {
     "create-new": "Ny användare",
-    "number-of-users": "{{count}} användare"
+    "number-of-users": "{{count}} användare",
+    "form": {
+      "roles": {
+        "label": "Roller",
+        "error": {
+          "empty": "Du måste välja minst en roll"
+        }
+      }
+    }
   },
   "user-view": {
     "actions": {

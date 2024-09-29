@@ -1,10 +1,9 @@
 'use client';
-import { ActionReturn } from '~/common/models/types/actions';
-import { root } from './message-form.css';
 import { Button, Icon, TextArea } from '@djeka07/ui';
+import { useRef } from 'react';
 import { useTranslation } from '~/app/i18n/client';
-import { useActionState, KeyboardEvent, FormEventHandler, useRef } from 'react';
 import { FieldError } from '~/common/models/types/field-error';
+import { root } from './message-form.css';
 
 export type Form = { message: string };
 
@@ -32,7 +31,7 @@ export const MessageForm = ({ onSubmit, isSending, errors }: MessageFormProps) =
         placeholder={t('form.conversation.input.message.placeholder')}
         ref={ref}
       />
-      <Button isLoading={isSending} wide={false} transparent>
+      <Button title="Send" isLoading={isSending} wide={false} transparent>
         <Icon color="white" name="Send" />
       </Button>
     </form>

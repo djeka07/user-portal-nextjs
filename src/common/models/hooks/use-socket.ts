@@ -1,3 +1,4 @@
+'use client';
 import { useContext } from 'react';
 import { SocketState, SocketContext } from '../contexts/socket.context';
 

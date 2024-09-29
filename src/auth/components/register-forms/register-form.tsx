@@ -71,7 +71,7 @@ const RegisterForm = ({ action, email }: RegisterFormProps) => {
         {t('form:register:success')}
       </Message>
       <div className={buttonWrapper}>
-        <Button isLoading={pending} type="submit">
+        <Button title={t('register:button')} isLoading={pending} type="submit">
           {t('register:button')}
         </Button>
         <Link className={link} href={`/${language}/login${queryParams}`}>

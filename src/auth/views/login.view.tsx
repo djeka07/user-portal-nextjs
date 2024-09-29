@@ -1,4 +1,4 @@
-import { Typography } from '@djeka07/ui/src/components/atoms/typographies';
+import { Typography } from '@djeka07/ui';
 import { getTranslation } from '~/app/i18n/server';
 import { LoginForm } from '../components/login-forms';
 import login from '../models/actions/login';

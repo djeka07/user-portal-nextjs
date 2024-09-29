@@ -7,7 +7,15 @@
   },
   "users-list": {
     "create-new": "New user",
-    "number-of-users": "{{count}} users"
+    "number-of-users": "{{count}} users",
+    "form": {
+      "roles": {
+        "label": "Roles",
+        "error": {
+          "empty": "You need to choose a least one role"
+        }
+      }
+    }
   },
   "user-view": {
     "actions": {

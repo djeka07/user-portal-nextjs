@@ -14,7 +14,7 @@ const CreateUserFormContainer = ({ onCancel, onSuccess }: CreateUserContainerPro
   const { t } = useTranslation();
   return (
     <UserForm
-      title={t('form:user:title:create')}
+      title={t('users:users-list:create-new')}
       successText={t('form:user:success:create')}
       errorText={t('form:user:error:create')}
       submitText={t('common:button:create')}

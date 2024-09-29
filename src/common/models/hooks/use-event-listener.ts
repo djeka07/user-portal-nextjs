@@ -5,14 +5,6 @@ export type Target = null | EventTarget | RefObject<EventTarget | null> | (() =>
 export type Options = boolean | AddEventListenerOptions & { shouldInjectEvent?: boolean | any }
 export type Handler = (event: Event) => void
 
-/* Have taken reference from ChakraUI's use-event-listener for typing out the props in type-safe manner. */
-
-/**
- * @description
- *  A hook which handles dom events in efficient and declarative manner.
- *
- * @see Docs https://classic-react-hooks.vercel.app/hooks/use-event-listener.html
- */
 export function useEventListener<K extends keyof DocumentEventMap>(
   target: Target,
   event: K,

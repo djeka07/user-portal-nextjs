@@ -6,6 +6,7 @@ import { headingWrapper, svg } from './conversation-list.css';
 import { useTranslation } from '~/app/i18n/client';
 import { Icon, Match, Message, Switch, Typography } from '@djeka07/ui';
 import { Link } from '~/common/components/links';
+import { useRouter } from '~/common/models/hooks';
 
 type ConversationListProps = {
   conversations?: ConversationsResponse;
@@ -18,6 +19,7 @@ type ConversationListProps = {
 
 const ConversationList = (props: ConversationListProps) => {
   const { t, language } = useTranslation();
+  const router = useRouter();
   return (
     <>
       <div className={headingWrapper}>

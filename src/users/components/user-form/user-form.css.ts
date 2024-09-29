@@ -7,7 +7,6 @@ export const root = style({
 });
 
 export const form = style({
-  backgroundColor: '#ffffff',
   display: 'flex',
   flexDirection: 'column',
   gap: 8,

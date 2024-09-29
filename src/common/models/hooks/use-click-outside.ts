@@ -2,11 +2,11 @@
 import { useRef } from 'react'
 import { useEventListener, Target } from './use-event-listener'
 
-export default function useClickOutside(
+ export const useClickOutside = (
    target: Target,
    handler: (event: DocumentEventMap['click']) => void,
    options?: { shouldInjectEvent?: boolean | any }
-) {
+) => {
    const paramsRef = useRef({
       target,
       handler,

@@ -43,7 +43,7 @@ const UserForm = ({
   return (
     <div className={root}>
       {!!title && (
-        <Typography weight="bold" variant="h2" color="grey700">
+        <Typography weight="bold" variant="h2">
           {title}
         </Typography>
       )}
@@ -53,16 +53,16 @@ const UserForm = ({
           value={form?.firstName}
           name="firstName"
           autoComplete="firstname"
-          label={t('form.user.input.firstName.label')}
-          placeholder={t('form.user.input.firstName.placeholder')}
+          label={t('register:form:first-name:label')}
+          placeholder={t('register:form:first-name:placeholder')}
           error={state?.errors?.firstName?.[0] ? t(state.errors.firstName[0]) : undefined}
         />
         <TextInput
           type="text"
           name="lastName"
           autoComplete="lastname"
-          label={t('form.user.input.lastName.label')}
-          placeholder={t('form.user.input.lastName.placeholder')}
+          label={t('register:form:last-name:label')}
+          placeholder={t('register:form:last-name:placeholder')}
           value={form?.lastName}
           error={state?.errors?.lastName?.[0] ? t(state.errors.lastName[0]) : undefined}
         />
@@ -71,15 +71,15 @@ const UserForm = ({
           name="email"
           autoComplete="email"
           value={form?.email}
-          label={t('form.login.input.email.label')}
-          placeholder={t('form.login.input.email.placeholder')}
+          label={t('login:form:email:label')}
+          placeholder={t('login:form:email:placeholder')}
           error={state?.errors?.email?.[0] ? t(state.errors.email[0]) : undefined}
         />
         {!!form?.id && <input type="hidden" name="id" value={form?.id} />}
         {!isEmpty(roles) && (
           <div>
-            <Typography marginBottom="small" variant="h5" color="grey700">
-              {t('form.user.input.roles.label')}
+            <Typography marginBottom="small" variant="h5">
+              {t('users:users-list:form:roles:label')}
             </Typography>
             <For each={roles} keyed={'id'}>
               {(item) => (
@@ -99,19 +99,18 @@ const UserForm = ({
             )}
           </div>
         )}
-        <Switch expression={state.statusCode}>
-          <Match when={!200}>
-            <div className={buttonWrapper}>
-              <Button isLoading={pending} type="submit">
-                {submitText}
-              </Button>
-              {!!onCancel && <Button onClick={onCancel}>{t('common.button.cancel')}</Button>}
-            </div>
-          </Match>
-          <Match when={200}>
-            <Message success>{successText}</Message>
-          </Match>
-        </Switch>
+
+        <div className={buttonWrapper}>
+          <Button success size="small" isLoading={pending} type="submit">
+            {submitText}
+          </Button>
+          {!!onCancel && (
+            <Button size="small" error onClick={onCancel}>
+              {t('common:button:cancel')}
+            </Button>
+          )}
+        </div>
+        {state.statusCode === 200 && <Message success>{successText}</Message>}
       </form>
     </div>
   );

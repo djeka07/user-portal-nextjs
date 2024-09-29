@@ -56,10 +56,8 @@ export function SocketProvider({ children, token, user }: SocketProviderProps) {
     });
 
     return () => {
-      if (socket) {
-        console.log('disconnecting');
-        socket?.disconnect();
-      }
+      console.log('disconnecting');
+      socket?.disconnect();
     };
   }, []);
 

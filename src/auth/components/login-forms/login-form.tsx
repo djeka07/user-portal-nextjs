@@ -41,7 +41,7 @@ const LoginForm = ({ action, redirectTo, email }: LoginFormProps) => {
         {t('form:login:error')}
       </Message>
       <div className={buttonWrapper}>
-        <Button type="submit" isLoading={pending}>
+        <Button title="Title" type="submit" isLoading={pending}>
           {t('login:title')}
         </Button>
         <div className={linkWrapper}>

@@ -1,7 +1,7 @@
 import { css } from '@djeka07/utils';
 import { iconClass } from './theme.css';
+import { Icon } from '@djeka07/ui';
 import { SizeKeys } from '@djeka07/ui/src/styles/typography';
-import { Icon } from '@djeka07/ui/src/components/atoms/icons';
 
 type ThemeProps = {
   theme: 'dark' | 'light';

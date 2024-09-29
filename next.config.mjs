@@ -1,4 +1,4 @@
-import { compose } from '@djeka07/utils';
+
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 import createBundleAnylyzer from '@next/bundle-analyzer'
 
@@ -10,7 +10,6 @@ const withBundleAnalyzer = createBundleAnylyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['@djeka07/ui'],
   serverRuntimeConfig: {
     userApi: process.env.USER_API,
     applicationId: process.env.APPLICATION_ID
@@ -18,6 +17,7 @@ const nextConfig = {
   experimental: {
     reactCompiler: true,
   },
+  transpilePackages: ['@djeka07/ui'],
   webpack: (config) => {
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
     config.module.rules.push(
@@ -55,4 +55,4 @@ const nextConfig = {
   }
 };
 
-export default withBundleAnalyzer(withVanillaExtractCss(nextConfig));
+export default withVanillaExtractCss(withBundleAnalyzer(nextConfig));

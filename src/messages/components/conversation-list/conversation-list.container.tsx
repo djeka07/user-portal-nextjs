@@ -1,12 +1,11 @@
 'use client';
+import { useEffect } from 'react';
 import { useAuth } from '~/auth/models/hooks/use-auth';
+import { useParams, useSocket } from '~/common/models/hooks';
 import { useConversations } from '~/messages/models/hooks/use-conversations';
 import { MessageReponse } from '~/messages/models/services/generated/message.generated';
 import { SocketEvent } from '~/notifications/models/services/generated/notification.generated';
 import ConversionList from './conversation-list';
-import { useSocket } from '~/common/models/hooks';
-import { useParams } from 'next/navigation';
-import { useEffect, useMemo } from 'react';
 
 const ConversationListContainer = () => {
   const { socket } = useSocket();
@@ -19,12 +18,13 @@ const ConversationListContainer = () => {
   };
 
   useEffect(() => {
+    console.log('running effect');
     fetch(1, 10);
     socket?.on(SocketEvent.MESSAGE_CREATED, onMessage);
     return () => {
       socket?.off(SocketEvent.MESSAGE_CREATED, onMessage);
     };
-  }, []);
+  }, [fetch, socket]);
 
   return (
     <ConversionList

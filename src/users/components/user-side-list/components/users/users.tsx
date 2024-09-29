@@ -15,7 +15,6 @@ type UsersProps = {
 
 const Users = ({ total, users, selectedUserId }: UsersProps) => {
   const { t, language } = useTranslation();
-  console.log(users);
   return (
     <>
       <div className={usersClass}>

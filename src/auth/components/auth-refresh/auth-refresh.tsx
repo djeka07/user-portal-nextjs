@@ -3,8 +3,7 @@ import { root, motionClass } from './auth-refresh.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { KeyboardEvent, useCallback } from 'react';
 import { isEnter } from '@djeka07/utils';
-import { Icon, Spinner, Typography } from '@djeka07/ui';
-import Switch, { Match } from '@djeka07/ui/src/components/atoms/switch/switch';
+import { Switch, Match, Icon, Spinner, Typography } from '@djeka07/ui';
 
 type AuthRefresh = {
   onClose: () => void;

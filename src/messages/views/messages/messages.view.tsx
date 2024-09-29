@@ -4,7 +4,7 @@ import { useConversations } from '~/messages/models/hooks/use-conversations';
 import { root } from './messages.view.css';
 import { Spinner } from '@djeka07/ui';
 import { useCallback, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '~/common/models/hooks';
 
 type MessagesViewProps = {
   language: string;

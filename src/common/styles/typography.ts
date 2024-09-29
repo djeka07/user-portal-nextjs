@@ -1,4 +1,4 @@
-import { Typography } from '@djeka07/ui/src/styles/typography';
+import { TypographyProps } from '@djeka07/ui/src/styles/typography';
 
 export default {
   family: {
@@ -54,4 +54,4 @@ export default {
       display: 'swap',
     },
   ],
-} satisfies Typography;
+} satisfies TypographyProps;

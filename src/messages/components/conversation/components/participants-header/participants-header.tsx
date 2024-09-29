@@ -39,11 +39,11 @@ const ParticipantsHeader = ({ currentUser, loggedInUsers, onBackClick, conversat
   );
   const filteredUserIds = useMemo(() => filteredUsers.map((f) => f.userId), []);
   const anyOnline = useMemo(() => loggedInUsers.some((u) => filteredUserIds.includes(u?.user?.userId || '')), []);
-
+  const title = anyOnline ? t('messages:message-view:active') : t('messages:message-view:not-active');
   return (
     <>
       <div className={root}>
-        <Button transparent innerClass={wrapper} onClick={() => setShowParticipantsPanel(true)}>
+        <Button title={title} transparent innerClass={wrapper} onClick={() => setShowParticipantsPanel(true)}>
           <UserBadges items={filteredUsers} />
           <span className={participantsWrapper}>
             <ParticipantsNames items={filteredUsers} conversationName={conversation?.conversationName} />
@@ -54,13 +54,13 @@ const ParticipantsHeader = ({ currentUser, loggedInUsers, onBackClick, conversat
                 })}
               ></span>
               <Typography as="span" variant="body" color="grey400" size="small">
-                {anyOnline ? t('messages:message-view:active') : t('messages:message-view:not-active')}
+                {title}
               </Typography>
             </span>
           </span>
         </Button>
 
-        <Button transparent onClick={() => setShowInformationPanel(true)}>
+        <Button title="Show" transparent onClick={() => setShowInformationPanel(true)}>
           <Icon name="AlertCircle" size="large" color="white" />
         </Button>
       </div>
