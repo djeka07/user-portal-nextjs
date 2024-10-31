@@ -3,10 +3,10 @@ import { Dayjs } from 'dayjs';
 import { createContext, useEffect, useState } from 'react';
 import { Socket } from 'socket.io-client';
 import { Authorization } from '~/auth/models/helpers/token';
+import { useLocalStorage } from '@djeka07/hooks';
 import { connectToClient } from '~/common/models/helpers/websocket';
 import { SocketEvent } from '~/notifications/models/services/generated/notification.generated';
 import { UserResponse } from '~/users/models/services/generated/user.generated';
-import { useLocaleStorage } from '../hooks';
 import { SessionInformation } from '../types/user.session';
 
 export type SocketProviderProps = {
@@ -31,7 +31,7 @@ export type SocketState = {
 export const SocketContext = createContext<Omit<SocketState, 'children'>>({ loggedInUsers: [] });
 
 export function SocketProvider({ children, token, user }: SocketProviderProps) {
-  const [sessionId, setSessionId] = useLocaleStorage<string | undefined>('sessionId', undefined);
+  const [sessionId, setSessionId] = useLocalStorage<string | undefined>('sessionId', undefined);
   const [socket, setSocket] = useState<Socket>();
   const [loggedInUsers, setLoggedInUsers] = useState<SessionInformation[]>([]);
 

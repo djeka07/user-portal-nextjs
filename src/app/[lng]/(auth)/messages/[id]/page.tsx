@@ -1,8 +1,11 @@
 import { MessageView } from '~/messages/views';
 
 type MessagePageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-const MessagePage = ({ params: { id } }: MessagePageProps) => <MessageView id={id} />;
+const MessagePage = async ({ params }: MessagePageProps) => {
+  const { id } = await params;
+  return <MessageView id={id} />;
+};
 export default MessagePage;

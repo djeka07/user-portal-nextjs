@@ -3,9 +3,10 @@ import { useCallback, useState } from 'react';
 import refreshAuthenticationAction from '~/auth/models/actions/refresh-authentication';
 import { useAuth } from '~/auth/models/hooks/use-auth';
 import { createDate } from '~/common/models/helpers/date';
-import { useInterval, usePathname } from '~/common/models/hooks';
+import { usePathname } from '~/common/models/hooks';
 import { ProgressState } from '~/common/models/types/fetch.state';
 import AuthRefresh from './auth-refresh';
+import { useInterval } from '@djeka07/hooks';
 
 const substractMs = parseInt(String(process.env.NEXT_PUBLIC_AUTH_SUBSTRACT_MS), 10);
 const intervalMs = parseInt(String(process.env.NEXT_PUBLIC_AUTH_CHECK_INTERVAL_MS), 10);

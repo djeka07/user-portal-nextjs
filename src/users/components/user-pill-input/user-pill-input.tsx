@@ -3,10 +3,10 @@ import { isEnter } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import debounce from 'lodash.debounce';
 import { ChangeEvent, useMemo, useRef, useState } from 'react';
-import { useClickOutside } from '~/common/models/hooks';
 import { ProgressState } from '~/common/models/types/fetch.state';
 import { UserResponse, UsersResponse } from '~/users/models/services/generated/user.generated';
 import { popupContent, root, user } from './user-pill-input.css';
+import { useClickOutside } from '@djeka07/hooks';
 
 type UserPillInputProps = {
   onInputChange: (val: string) => Promise<void>;

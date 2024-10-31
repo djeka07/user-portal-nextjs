@@ -50,10 +50,10 @@ const EditPasswordForm = ({ user, action, onCancel }: EditPasswordFormProps) => 
         name="confirmPassword"
       />
       <div className={buttonWrapper}>
-        <Button size="small" isLoading={pending} success>
+        <Button label={t('common:button:update')} size="small" isLoading={pending} success>
           {t('common:button:update')}
         </Button>
-        <Button size="small" onClick={onCancel} error>
+        <Button label={t('common:button:cancel')} size="small" onClick={onCancel} error>
           {t('common:button:cancel')}
         </Button>
       </div>

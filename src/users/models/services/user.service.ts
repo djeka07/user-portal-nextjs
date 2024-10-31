@@ -6,7 +6,7 @@ const url = process.env.USER_API!;
 const applicationId = process.env.APPLICATION_ID;
 
 type GetSelfRequestParams = {
-  accessToken: string;
+  accessToken?: string;
 }
 
 export type CreateUserRequestParams = GetSelfRequestParams & {

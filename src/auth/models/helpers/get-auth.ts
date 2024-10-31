@@ -2,7 +2,7 @@
 
 import { createFormData } from '@djeka07/utils';
 import { redirect } from 'next/navigation';
-import { cookieName } from '~/app/i18n/settings';
+import { cookieName, fallbackLng } from '~/app/i18n/settings';
 import { isBefore } from '~/common/models/helpers/date';
 import { Authorization } from './token';
 import logoutAction from '../actions/logout';
@@ -12,7 +12,8 @@ import { getSession } from './session';
 const getAuth = async (): Promise<Authorization> => {
   const session = await getSession();
     if (!session || !isBefore(session?.expires, Date.now())) {
-      const language = cookies().get(cookieName)?.value;
+      const language = (await cookies())?.get(cookieName)?.value || fallbackLng;
+      console.log(language, 'l')
       logoutAction(createFormData({ language }));
       redirect(`/${language}/login`)
     }

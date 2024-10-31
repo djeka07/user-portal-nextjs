@@ -43,7 +43,7 @@ const ParticipantsHeader = ({ currentUser, loggedInUsers, onBackClick, conversat
   return (
     <>
       <div className={root}>
-        <Button title={title} transparent innerClass={wrapper} onClick={() => setShowParticipantsPanel(true)}>
+        <Button label={title} transparent innerClass={wrapper} onClick={() => setShowParticipantsPanel(true)}>
           <UserBadges items={filteredUsers} />
           <span className={participantsWrapper}>
             <ParticipantsNames items={filteredUsers} conversationName={conversation?.conversationName} />
@@ -60,7 +60,7 @@ const ParticipantsHeader = ({ currentUser, loggedInUsers, onBackClick, conversat
           </span>
         </Button>
 
-        <Button title="Show" transparent onClick={() => setShowInformationPanel(true)}>
+        <Button label="Show" transparent onClick={() => setShowInformationPanel(true)}>
           <Icon name="AlertCircle" size="large" color="white" />
         </Button>
       </div>

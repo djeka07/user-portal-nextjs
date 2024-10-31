@@ -7,7 +7,6 @@ import { cookies } from 'next/headers';
 import getAuth from '~/auth/models/helpers/get-auth';
 import { ActionReturn } from '~/common/models/types/actions';
 
-
 export const userFormSchema = z.object({
   id: z.string().optional(),
   email: z.string({ message: 'form:login:input:email:error:empty' }).email('form:login:input:email:error:not-valid'),
@@ -28,23 +27,23 @@ export const userFormSchema = z.object({
 
 export type UserFormData = z.infer<typeof userFormSchema>;
 
-
-const createUserAction = async (_: unknown, formData: FormData): Promise<ActionReturn> => {
+const createUserAction = async (_: unknown, formData: FormData): Promise<ActionReturn> => {
   const { email, firstName, lastName, roles } = parse<UserFormData>(formData);
-const {accessToken } = await getAuth();
+  const { accessToken } = await getAuth();
   const { success, error } = userFormSchema.safeParse({ email, firstName, lastName, roles });
-const filteredRoles = roles.filter<string>(
-  (f): f is string => typeof f === 'string',
-) || [];
+  const filteredRoles = roles.filter<string>((f): f is string => typeof f === 'string') || [];
   if (!success) {
     return {
       errors: error.flatten().fieldErrors,
-      statusCode: 400
-    }
+      statusCode: 400,
+    };
   }
 
-  const response = await createUserRequest({ accessToken, form: { email, firstName, lastName, roles: filteredRoles.map(((role) => ({ roleId: role })) ||[])} })
-  return { statusCode: 200, data: response }
+  const response = await createUserRequest({
+    accessToken,
+    form: { email, firstName, lastName, roles: filteredRoles.map((role) => ({ roleId: role })) },
+  });
+  return { statusCode: 200, data: response };
 };
 
 export default createUserAction;

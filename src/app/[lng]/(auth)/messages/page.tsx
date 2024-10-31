@@ -1,10 +1,11 @@
 import MessagesView from '~/messages/views/messages/messages.view';
 
 type MessagesPageProps = {
-  params: { lng: string };
+  params: Promise<{ lng: string }>;
 };
 
-const MessagesPage = ({ params: { lng } }: MessagesPageProps) => {
+const MessagesPage = async ({ params }: MessagesPageProps) => {
+  const { lng } = await params;
   return <MessagesView language={lng} />;
 };
 

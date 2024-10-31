@@ -1,6 +1,6 @@
+import { media } from '@djeka07/ui';
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
-import media from '~/common/styles/media.css';
 
 export const messages = style({
   flexGrow: 1,

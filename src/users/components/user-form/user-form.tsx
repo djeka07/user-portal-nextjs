@@ -101,11 +101,11 @@ const UserForm = ({
         )}
 
         <div className={buttonWrapper}>
-          <Button success size="small" isLoading={pending} type="submit">
+          <Button label={submitText} success size="small" isLoading={pending} type="submit">
             {submitText}
           </Button>
           {!!onCancel && (
-            <Button size="small" error onClick={onCancel}>
+            <Button label={t('common:button:cancel')} size="small" error onClick={onCancel}>
               {t('common:button:cancel')}
             </Button>
           )}

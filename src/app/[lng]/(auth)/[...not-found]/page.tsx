@@ -1,10 +1,10 @@
 import { Typography } from '@djeka07/ui';
 
 type NotFoundProps = {
-  params: { lng: string };
+  params: Promise<{ lng: string }>;
 };
 
-const NotFound = async ({ params: { lng } }: NotFoundProps) => {
+const NotFound = async ({ params }: NotFoundProps) => {
   return <Typography variant="h1">Sidan hittades inte</Typography>;
 };
 

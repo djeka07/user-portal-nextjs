@@ -1,7 +1,6 @@
 'use client';
 
-import { Button, TextInput } from '@djeka07/ui/src/components/atoms/inputs';
-import { Message } from '@djeka07/ui/src/components/atoms/messages';
+import { Message, Button, TextInput } from '@djeka07/ui';
 import { useActionState } from 'react';
 import { useTranslation } from '~/app/i18n/client';
 import { Link } from '~/common/components/links';
@@ -71,10 +70,10 @@ const RegisterForm = ({ action, email }: RegisterFormProps) => {
         {t('form:register:success')}
       </Message>
       <div className={buttonWrapper}>
-        <Button title={t('register:button')} isLoading={pending} type="submit">
+        <Button label={t('register:button')} isLoading={pending} type="submit">
           {t('register:button')}
         </Button>
-        <Link className={link} href={`/${language}/login${queryParams}`}>
+        <Link className={link} href={`/${language}/login${queryParams}`} as={`/${language}/hejsan`}>
           {t('login:title')}
         </Link>
       </div>

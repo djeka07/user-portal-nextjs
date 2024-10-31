@@ -42,7 +42,7 @@ const NewPasswordForm = ({ email, resetToken }: NewPasswordFormProps) => {
         type="password"
       />
       {!state.statusCode ? (
-        <Button title={t('common:button:confirm')} isLoading={pending} type="submit">
+        <Button label={t('common:button:confirm')} isLoading={pending} type="submit">
           {t('common:button:confirm')}
         </Button>
       ) : (

@@ -2,7 +2,7 @@
 
 import { useColorMode } from '~/common/models/hooks';
 import Theme from './theme';
-import { SizeKeys } from '@djeka07/ui/src/styles/typography';
+import { SizeKeys } from '@djeka07/ui';
 
 type ThemeContainerProps = {
   className?: string;

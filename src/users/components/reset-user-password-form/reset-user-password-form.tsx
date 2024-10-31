@@ -32,11 +32,11 @@ const ResetUserPasswordForm = ({ action, onCancel, onSuccess, user }: ResetUserP
       <form action={formAction}>
         <input type="hidden" name="id" value={user.id} />
         <div className={buttonWrapper}>
-          <Button size="small" success type="submit">
+          <Button label="Om" size="small" success type="submit">
             Ok
           </Button>
           {!!onCancel && (
-            <Button size="small" error onClick={onCancel}>
+            <Button label="Close" size="small" error onClick={onCancel}>
               Close
             </Button>
           )}

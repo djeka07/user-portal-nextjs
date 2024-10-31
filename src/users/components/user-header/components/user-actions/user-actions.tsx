@@ -28,6 +28,7 @@ const UserActions = ({ user }: UserActionsProps) => {
     <>
       <div className={root}>
         <ActionButton
+          label={t('users:user-view:actions:edit:text')}
           iconName="Edit"
           onClick={() => setSelectedAction('edit')}
           description={t('users:user-view:actions:edit:text')}
@@ -36,12 +37,14 @@ const UserActions = ({ user }: UserActionsProps) => {
         </ActionButton>
         <ActionButton
           iconName="Edit"
+          label={t('users:user-view:actions:edit-password:text')}
           onClick={() => setSelectedAction('edit_password')}
           description={t('users:user-view:actions:edit-password:text')}
         >
           {t('users:user-view:actions:edit-password:title')}
         </ActionButton>
         <ActionButton
+          label={t('users:user-view:actions:reset:text')}
           iconName="Repeat"
           onClick={() => setSelectedAction('reset')}
           description={t('users:user-view:actions:reset:text')}

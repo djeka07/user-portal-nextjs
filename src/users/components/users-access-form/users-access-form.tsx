@@ -29,7 +29,7 @@ const UserAccessForm = ({ action, appData, users, onSuccess }: UserAccessListPro
         />
         <UsersFormPart errors={state.errors?.users} users={users} />
         <div className={buttonWrapper}>
-          <Button size="small" disabled={(users?.total || 0) === 0} type="submit">
+          <Button label={t('common.button.update')} size="small" disabled={(users?.total || 0) === 0} type="submit">
             {t('common.button.update')}
           </Button>
         </div>

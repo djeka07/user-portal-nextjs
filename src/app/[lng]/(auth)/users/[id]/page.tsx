@@ -3,10 +3,11 @@ import fetchUserAction from '~/users/models/actions/fetch-user';
 import { UserView } from '~/users/views';
 
 type UserPageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-const UserPage = async ({ params: { id } }: UserPageProps) => {
+const UserPage = async ({ params }: UserPageProps) => {
+  const { id } = await params;
   const user = await fetchUserAction(id);
 
   return (

@@ -1,5 +1,5 @@
+import { media } from '@djeka07/ui';
 import { style } from '@vanilla-extract/css';
-import media from '~/common/styles/media.css';
 
 export const search = style({
   padding: '10px 20px',

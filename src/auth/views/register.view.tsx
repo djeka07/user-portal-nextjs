@@ -1,4 +1,4 @@
-import { Typography } from '@djeka07/ui/src/components/atoms/typographies';
+import { Typography } from '@djeka07/ui';
 import { getTranslation } from '~/app/i18n/server';
 import { RegisterForm } from '~/auth/components/register-forms';
 import registerAction from '../models/actions/register';

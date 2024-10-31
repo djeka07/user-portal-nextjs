@@ -1,10 +1,12 @@
 'use client';
+
 import { Button, Message, TextInput } from '@djeka07/ui';
 import { buttonWrapper, form, link, linkWrapper, message } from './login.form.css';
 import { useActionState } from 'react';
 import { useTranslation } from '~/app/i18n/client';
 import { createQueryParams } from '~/common/models/helpers/query';
 import { Link } from '~/common/components/links';
+import { useDidMount } from '@djeka07/hooks';
 
 type LoginFormProps = {
   redirectTo?: string;
@@ -16,6 +18,9 @@ const LoginForm = ({ action, redirectTo, email }: LoginFormProps) => {
   const { t, language } = useTranslation();
   const [state, formAction, pending] = useActionState(action, null);
   const queryParams = createQueryParams({ email }, { skipNulls: true, addQueryPrefix: true, encodeValuesOnly: true });
+  useDidMount(() => {
+    console.log('mount');
+  });
   return (
     <form className={form} action={formAction}>
       <input type="hidden" name="redirectTo" value={redirectTo} />
@@ -41,7 +46,7 @@ const LoginForm = ({ action, redirectTo, email }: LoginFormProps) => {
         {t('form:login:error')}
       </Message>
       <div className={buttonWrapper}>
-        <Button title="Title" type="submit" isLoading={pending}>
+        <Button label="Title" type="submit" isLoading={pending}>
           {t('login:title')}
         </Button>
         <div className={linkWrapper}>

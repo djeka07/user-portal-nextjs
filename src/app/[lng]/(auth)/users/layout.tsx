@@ -4,13 +4,16 @@ import { UserSideListContainer } from '~/users/components/user-side-list';
 
 export type UsersLayoutProps = {
   children: ReactNode;
-  params: { id?: string };
+  params: Promise<{ id?: string }>;
 };
 
-const UsersLayout = ({ children, params }: UsersLayoutProps) => (
-  <AsideLayout margin="small" asideRender={<UserSideListContainer id={params?.id} />}>
-    {children}
-  </AsideLayout>
-);
+const UsersLayout = async ({ children, params }: UsersLayoutProps) => {
+  const { id } = await params;
+  return (
+    <AsideLayout margin="small" asideRender={<UserSideListContainer id={id} />}>
+      {children}
+    </AsideLayout>
+  );
+};
 
 export default UsersLayout;

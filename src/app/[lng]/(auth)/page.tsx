@@ -3,12 +3,13 @@ import { getSession } from '~/auth/models/helpers/session';
 import { getSelfRequest } from '~/users/models/services/user.service';
 
 type IndexProps = {
-  params: { lng: string };
+  params: Promise<{ lng: string }>;
 };
 
-const Index = async ({ params: { lng } }: IndexProps) => {
+const Index = async ({ params }: IndexProps) => {
+  const { lng } = await params;
   const session = await getSession();
-  const user = await getSelfRequest({ accessToken: session!.accessToken });
+  const user = await getSelfRequest({ accessToken: session?.accessToken });
   return (
     <Typography variant="h1">
       Hejsan {user.firstName} {user.lastName}

@@ -11,6 +11,7 @@ type LoginViewProps = {
 
 const LoginView = async ({ redirectTo, language, email }: LoginViewProps) => {
   const { t } = await getTranslation(language, 'login');
+
   return (
     <>
       <Typography variant="h1">{t('title')}</Typography>

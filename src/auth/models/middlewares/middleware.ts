@@ -5,7 +5,7 @@ import { getSession } from '../helpers/session';
 
 const LANG_PLACEHOLDER = ':lang';
 
-const publicRoutes = [`/${LANG_PLACEHOLDER}/reset`, `/${LANG_PLACEHOLDER}/login`, `/${LANG_PLACEHOLDER}/register`, `/${LANG_PLACEHOLDER}/new-password`];
+const publicRoutes = [`/${LANG_PLACEHOLDER}/reset`, `/${LANG_PLACEHOLDER}/login`, `/${LANG_PLACEHOLDER}/register`, `/${LANG_PLACEHOLDER}/new-password`, `/${LANG_PLACEHOLDER}/hejsan`];
 
 const withAuth: MiddlewareFactory = (next: NextMiddleware) => {
   return async (request: NextRequest, _next: NextFetchEvent) => {

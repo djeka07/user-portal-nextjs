@@ -31,7 +31,7 @@ export const MessageForm = ({ onSubmit, isSending, errors }: MessageFormProps) =
         placeholder={t('form.conversation.input.message.placeholder')}
         ref={ref}
       />
-      <Button title="Send" isLoading={isSending} wide={false} transparent>
+      <Button label="Send" title="Send" isLoading={isSending} wide={false} transparent>
         <Icon color="white" name="Send" />
       </Button>
     </form>

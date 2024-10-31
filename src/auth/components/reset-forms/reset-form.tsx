@@ -30,7 +30,7 @@ const ResetForm = ({ action, email }: ResetFormProps) => {
         {t('reset:success')}
       </Message>
       <div className={buttonWrapper}>
-        <Button title={t('reset:button')} isLoading={pending} type="submit">
+        <Button label={t('reset:button')} isLoading={pending} type="submit">
           {t('reset:button')}
         </Button>
         <Link className={link} href={`/${language}/login${queryParams}`}>

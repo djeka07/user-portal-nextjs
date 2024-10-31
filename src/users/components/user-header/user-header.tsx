@@ -40,7 +40,13 @@ const UserHeader = ({ isAdmin, isCurrentUser, user }: UserHeaderProps) => {
         </Typography>
       </div>
       {(isCurrentUser || isAdmin) && (
-        <Button align="center" justify="center" size="small" onClick={() => setShowUserActions(true)}>
+        <Button
+          label={t('common:button:actions')}
+          align="center"
+          justify="center"
+          size="small"
+          onClick={() => setShowUserActions(true)}
+        >
           {t('common:button:actions')}
           <Icon color="white" name="Menu" />
         </Button>

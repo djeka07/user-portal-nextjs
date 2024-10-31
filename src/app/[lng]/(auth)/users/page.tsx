@@ -1,10 +1,11 @@
 import { UsersView } from '~/users/views';
 
 type UsersPageProps = {
-  params: { lng: string };
+  params: Promise<{ lng: string }>;
 };
 
-const UsersPage = ({ params: { lng } }: UsersPageProps) => {
+const UsersPage = async ({ params }: UsersPageProps) => {
+  const { lng } = await params;
   return <UsersView language={lng} />;
 };
 
