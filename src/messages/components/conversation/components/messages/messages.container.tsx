@@ -4,7 +4,7 @@ import { useConversations } from '~/messages/models/hooks/use-conversations';
 import { MessageReponse } from '~/messages/models/services/generated/message.generated';
 import { useSocket } from '~/common/models/hooks';
 import { useAuth } from '~/auth/models/hooks/use-auth';
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 type MessagesContainerProps = {
   id: string;
@@ -16,19 +16,29 @@ const MessagesContainer = ({ id }: MessagesContainerProps) => {
   const { socket, loggedInUsers } = useSocket();
   const conversation = conversations?.find((i) => i.conversationId === id);
   console.log('state', state);
-  const onMessageRecieved = (message: MessageReponse) => {
-    if (!conversation?.items?.find((s) => s.messageId === message?.messageId)) {
-      pushMessages(id, [message]);
-    }
-  };
+  const onMessageRecieved = useCallback(
+    (message: MessageReponse) => {
+      if (!conversation?.items?.find((s) => s.messageId === message?.messageId)) {
+        pushMessages(id, [message]);
+      }
+    },
+    [conversation?.items, id, pushMessages],
+  );
 
   const onMessagesRead = (messageIds: string[]) => {
     readMessages(id, messageIds);
   };
 
-  const onReadMessageReceived = (messages: MessageReponse[]) => {
-    updateMessages(id, messages);
-  };
+  const onReadMessageReceived = useCallback(
+    (messages: MessageReponse[]) => {
+      updateMessages(id, messages);
+    },
+    [id, updateMessages],
+  );
+
+  const onFetch = useCallback(async () => {
+    fetchMessages(id, (conversation?.page || 1) + 1);
+  }, [conversation?.page, fetchMessages, id]);
 
   useEffect(() => {
     socket?.on(SocketEvent.MESSAGE_CREATED, onMessageRecieved);
@@ -37,12 +47,12 @@ const MessagesContainer = ({ id }: MessagesContainerProps) => {
       socket?.off(SocketEvent.MESSAGE_CREATED, onMessageRecieved);
       socket?.off(SocketEvent.MESSAGE_READ, onReadMessageReceived);
     };
-  }, []);
+  }, [onMessageRecieved, onReadMessageReceived, socket]);
 
   return (
     <Messages
       conversation={conversation}
-      onFetch={() => fetchMessages(id, (conversation?.page || 1) + 1)}
+      onFetch={onFetch}
       id={id}
       currentUser={user}
       loggedInUsers={loggedInUsers}

@@ -1,7 +1,11 @@
 'use client';
 import { produce, WritableDraft } from 'immer';
-import { createContext, useState, useCallback } from 'react';
+import { createContext, useCallback, useState } from 'react';
+import createConversationFormAction from '../actions/create-conversation';
 import createMessageFormAction from '../actions/create-message';
+import fetchConversationMessagesServerFn from '../actions/fetch-conversation-messages';
+import fetchConversationsServerFn from '../actions/fetch-conversations';
+import updateMessageReadStatusServerFn from '../actions/update-message-read-status';
 import { MessageReponse } from '../services/generated/message.generated';
 import {
   ConversationActions,
@@ -10,11 +14,6 @@ import {
   ConversationState,
 } from './conversation.state';
 import createConversationWithDefaultValue from './create-conversation-with-default-value';
-import createConversationFormAction from '../actions/create-conversation';
-import updateMessageReadStatusServerFn from '../actions/update-message-read-status';
-import fetchConversationMessagesServerFn from '../actions/fetch-conversation-messages';
-import fetchConversationsServerFn from '../actions/fetch-conversations';
-import { arrayToObject } from '@djeka07/utils';
 
 const defaultState: ConversationsContextType = [
   {
@@ -68,7 +67,7 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
   const context: ConversationsContextType = [
     state,
     {
-      createMessage: async (id: string, form: FormData): Promise<MessageReponse | null> => {
+      createMessage: useCallback(async (id: string, form: FormData): Promise<MessageReponse | null> => {
         try {
           setState((prev) => ({
             ...prev,
@@ -97,8 +96,8 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
           );
           return null;
         }
-      },
-      create: async (userIds: string[], form: FormData) => {
+      }, []),
+      create: useCallback(async (userIds: string[], form: FormData) => {
         const response = await createConversationFormAction(userIds, form);
         setState(
           produce((prev) => {
@@ -106,8 +105,8 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
           }),
         );
         return response;
-      },
-      readMessages: async (id: string, messageIds: string[]) => {
+      }, []),
+      readMessages: useCallback(async (id: string, messageIds: string[]) => {
         const response = await updateMessageReadStatusServerFn(id, messageIds);
         setState(
           produce((prev) => {
@@ -119,7 +118,7 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
             conversation.items = items;
           }),
         );
-      },
+      }, []),
       fetchMessages: useCallback(async (id: string, page: number = 1, take: number = 20) => {
         try {
           console.log('fetch messages');
@@ -159,7 +158,7 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
           );
         }
       }, []),
-      fetch: async (page: number, take: number = 20) => {
+      fetch: useCallback(async (page: number, take: number = 20) => {
         setState(
           produce((prev) => {
             prev.state = 'pending';
@@ -181,8 +180,8 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
             prev.total = response.total;
           }),
         );
-      },
-      updateMessages: (id: string, messages: MessageReponse[]): void => {
+      }, []),
+      updateMessages: useCallback((id: string, messages: MessageReponse[]): void => {
         setState(
           produce((prev) => {
             const conversation = prev.conversations.find((c) => c.conversationId === id) || { state: 'initial' };
@@ -193,8 +192,8 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
             conversation.items = items;
           }),
         );
-      },
-      pushMessages: (id: string, messages: MessageReponse[]) => {
+      }, []),
+      pushMessages: useCallback((id: string, messages: MessageReponse[]) => {
         setState(
           produce((prev) => {
             const conversation = prev.conversations.find((c) => c.conversationId === id) || { state: 'initial' };
@@ -202,7 +201,7 @@ export const ConversationsProvider = ({ children, id }: ConversationProviderProp
             conversation.total = (conversation?.items || []).length;
           }),
         );
-      },
+      }, []),
     },
   ];
 

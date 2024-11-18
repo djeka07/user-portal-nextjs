@@ -59,7 +59,7 @@ export function SocketProvider({ children, token, user }: SocketProviderProps) {
       console.log('disconnecting');
       socket?.disconnect();
     };
-  }, []);
+  }, [sessionId, setSessionId, socket, token?.accessToken, user]);
 
   return (
     <SocketContext.Provider value={{ socket: socket as Socket, loggedInUsers }}>{children}</SocketContext.Provider>

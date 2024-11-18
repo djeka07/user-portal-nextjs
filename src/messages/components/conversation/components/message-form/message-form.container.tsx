@@ -10,7 +10,7 @@ type MessageFormContainerProps = {
 const MessageFormContainer = ({ id }: MessageFormContainerProps) => {
   const { socket } = useSocket();
   const [{ conversations }, { createMessage }] = useConversations();
-  const conversation = useMemo(() => conversations?.find((c) => c.conversationId === id), [id]);
+  const conversation = useMemo(() => conversations?.find((c) => c.conversationId === id), [conversations, id]);
 
   const onSubmit = async (message?: string) => {
     const formData = new FormData();

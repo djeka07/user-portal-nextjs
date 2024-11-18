@@ -29,16 +29,22 @@ const ParticipantsHeader = ({ currentUser, loggedInUsers, onBackClick, conversat
   const { t } = useTranslation();
   const [showParticipantsPanel, setShowParticipantsPanel] = useState(false);
   const [showInformationPanel, setShowInformationPanel] = useState(false);
-  const isConversationWithSelf = useMemo(() => conversation?.users?.every((u) => u.userId === currentUser?.id), []);
+  const isConversationWithSelf = useMemo(
+    () => conversation?.users?.every((u) => u.userId === currentUser?.id),
+    [conversation?.users, currentUser?.id],
+  );
   const filteredUsers = useMemo(
     () =>
       isConversationWithSelf
         ? conversation?.users || []
         : conversation?.users?.filter((u) => u?.userId !== currentUser?.id) || [],
-    [],
+    [conversation?.users, currentUser?.id, isConversationWithSelf],
   );
-  const filteredUserIds = useMemo(() => filteredUsers.map((f) => f.userId), []);
-  const anyOnline = useMemo(() => loggedInUsers.some((u) => filteredUserIds.includes(u?.user?.userId || '')), []);
+  const filteredUserIds = useMemo(() => filteredUsers.map((f) => f.userId), [filteredUsers]);
+  const anyOnline = useMemo(
+    () => loggedInUsers.some((u) => filteredUserIds.includes(u?.user?.userId || '')),
+    [filteredUserIds, loggedInUsers],
+  );
   const title = anyOnline ? t('messages:message-view:active') : t('messages:message-view:not-active');
   return (
     <>

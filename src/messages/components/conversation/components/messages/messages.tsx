@@ -5,7 +5,7 @@ import { ConversationState } from '~/messages/models/contexts/conversation.state
 import { SessionInformation } from '~/common/models/types/user.session';
 import { UserResponse } from '~/users/models/services/generated/user.generated';
 import { useTranslation } from '~/app/i18n/client';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { isEmpty } from '@djeka07/utils';
 import { For, Spinner, Typography } from '@djeka07/ui';
 
@@ -28,7 +28,7 @@ const Messages = ({ id, loggedInUsers, conversation, currentUser, onFetch, onMes
     [conversation?.items, currentUser?.id],
   );
 
-  const onScoll = () => {
+  const onScoll = useCallback(() => {
     if (
       !!ref.current &&
       ref?.current?.scrollTop < 500 &&
@@ -40,7 +40,7 @@ const Messages = ({ id, loggedInUsers, conversation, currentUser, onFetch, onMes
     }
 
     // console.log(ref?.scrollTop, (ref?.scrollHeight as number) - (ref?.clientHeight as number));
-  };
+  }, [conversation?.hasNextPage, conversation?.state, onFetch]);
 
   const scrollToBottom = (behavior: ScrollBehavior = 'instant') => {
     setTimeout(() => {
@@ -78,7 +78,7 @@ const Messages = ({ id, loggedInUsers, conversation, currentUser, onFetch, onMes
     scrollToBottom();
     ref?.current?.addEventListener('scroll', onScoll, { passive: true });
     return;
-  }, []);
+  }, [onScoll]);
 
   useEffect(() => {
     if (!ref || isEmpty(unreadMessages) || !onMessagesRead) {
@@ -108,7 +108,7 @@ const Messages = ({ id, loggedInUsers, conversation, currentUser, onFetch, onMes
     if (id) {
       scrollToBottom();
     }
-  }, []);
+  }, [id]);
 
   // useEffect(() => {
   //   const prevLastMessage = prev?.at(-1);
